@@ -1,0 +1,27 @@
+{
+  "name": "todo-bom-api",
+  "version": "1.0.0",
+  "description": "API for todo bom project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linoyElimeleh/FinalProject_ServerSide.git"
+  },
+  "author": "Team 111",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/linoyElimeleh/FinalProject_ServerSide/issues"
+  },
+  "homepage": "https://github.com/linoyElimeleh/FinalProject_ServerSide#readme",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "express-openapi": "^10.1.0",
+    "swagger-autogen": "^2.19.0",
+    "swagger-ui-express": "^4.3.0"
+  }
+}
