@@ -18,9 +18,15 @@
   "homepage": "https://github.com/linoyElimeleh/FinalProject_ServerSide#readme",
   "dependencies": {
     "body-parser": "^1.19.2",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "errorhandler": "^1.5.1",
     "express": "^4.17.3",
     "express-openapi": "^10.1.0",
+    "node-postgres": "^0.6.2",
+    "passport": "^0.5.2",
+    "pg": "^8.7.3",
     "swagger-autogen": "^2.19.0",
     "swagger-ui-express": "^4.3.0"
   }
