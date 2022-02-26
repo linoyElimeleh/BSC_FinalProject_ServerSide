@@ -3,8 +3,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const errorhandler = require('errorhandler');
 var passport = require("passport");
-const db = require('./handlers/dbHandler');
 const routes = require('./routes');
+var session = require("express-session");
 
 require('dotenv').config;
 
@@ -18,7 +18,6 @@ const port = process.env.NODE_PORT || 8000;
 app.use('/public', express.static(__dirname + '/public'));
 
 app.use(routes);
-// app.get('/categories', db.getCategories);
 
 app.use(cors);
 
@@ -27,8 +26,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(require('cookie-parser')());
 
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 app.use(session({secret: 'todobom'}))
 

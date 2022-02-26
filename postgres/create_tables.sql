@@ -95,6 +95,7 @@ CREATE TABLE users
   display_name text  NOT NULL,
   email        text  NOT NULL,
   birth_date   date  NOT NULL,
+  password     text  NOT NULL,
   image        bytea,
   PRIMARY KEY (id)
 );

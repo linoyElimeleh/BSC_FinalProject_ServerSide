@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const healthCheckRouter = require('./healthCheck');
+const categoriesRouter = require('./categoriesRouter');
 
 router.use('/', healthCheckRouter);
+router.use('/categories', categoriesRouter);
 
 router.use(function(err, req, res, next){
   if(err.name === 'ValidationError'){
