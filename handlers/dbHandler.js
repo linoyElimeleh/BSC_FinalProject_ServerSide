@@ -1,5 +1,7 @@
 const Pool = require('pg').Pool
 const bcrypt = require('bcrypt');
+const { encryptPassword } = require('../utils/authentication');
+const { jwtTokens } = require('../utils/jwt-helpers');
 
 const pool = new Pool({
     user: 'postgres',
@@ -12,39 +14,38 @@ const pool = new Pool({
 const getCategories = async () => {
     const response = await pool.query('select * from categories');
     return response?.rows;
-
-        // await pool.query('select * from categories', (error, results) => {
-        //     if (error) {
-        //         throw error;
-        //     }
-        //     res.status(200).json(results.rows);
-    // });
 }
 
-const authenticateUser = async (email, password, done) => {
+const getUserByEmail = async (email) => {
+    return await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+}
+
+const insertUser = async (user) => {
     const client = await pool.connect();
-    try {
-        await client.query('BEGIN');
-        await JSON.stringify(client.query('SELECT rowid AS id, * FROM users WHERE email=$1', [email], (err, result) => {
-            if (err) return done(err);
-            if (!result) return done(null, false, { message: "Incorrect email or password" });
-            bcrypt.compare(password, result.rows[0].password, (err, check) => {
-                if (err) {
-                    return done();
-                }
-                else if (check) {
-                    let user = result.rows[0];
-                    return done(null, [{ email: user.email }]);
-                } else {
-                    return done(null, false);
-                }
-            })
-
-        }))
-
-    } catch (e) { throw e; }
+    client.query('BEGIN');
+    const { display_name, email, birth_date, password, image } = user;
+    const hashedPassword = encryptPassword(password);
+    const newUser = await client.query(
+        'INSERT INTO users (display_name,email,birth_date, password, image) VALUES ($1,$2,$3,$4,$5) RETURNING *'
+        , [display_name, email, birth_date, hashedPassword, image]);
+    client.query('COMMIT');
+    return newUser;
 }
+
+const startAction = (client) => {
+    client.query('BEGIN');
+}
+
+const commitAction = (client) => {
+    client.query('COMMIT');
+}
+
 
 module.exports = {
-    getCategories
+    pool,
+    startAction,
+    commitAction,
+    insertUser,
+    getCategories,
+    getUserByEmail
 };

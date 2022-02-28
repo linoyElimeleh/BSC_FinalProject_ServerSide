@@ -1,4 +1,6 @@
 const express = require('express');
+require('dotenv').config();
+
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const errorhandler = require('errorhandler');
@@ -6,7 +8,6 @@ var passport = require("passport");
 const routes = require('./routes');
 var session = require("express-session");
 
-require('dotenv').config;
 
 
 var isProduction = process.env.NODE_ENV === 'production';
@@ -17,19 +18,21 @@ const port = process.env.NODE_PORT || 8000;
 
 app.use('/public', express.static(__dirname + '/public'));
 
-app.use(routes);
-
-app.use(cors);
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(require('cookie-parser')());
 
+app.use(routes);
+
+app.use(cors);
+
+
+
 // app.use(passport.initialize());
 // app.use(passport.session());
 
-app.use(session({secret: 'todobom'}))
+app.use(session({ secret: 'todobom' }))
 
 if (!isProduction) {
     app.use(errorhandler());
@@ -70,6 +73,5 @@ app.use(function (err, req, res, next) {
         }
     });
 });
-
 
 app.listen(port, () => console.log(`API is listening on port ${port}`));
