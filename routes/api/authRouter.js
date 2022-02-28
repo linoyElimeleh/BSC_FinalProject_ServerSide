@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const jwt = require('jsonwebtoken');
 const dbHandler = require('../../handlers/dbHandler');
-const { jwtTokens } = require('../../utils/jwt-helpers');
-const { validatePassword } = require('../../utils/authentication');
+const { jwtTokens } = require('../../utils/jwtUtils');
+const { validatePassword } = require('../../utils/authenticationUtils');
 
 router.post('/login', async (req, res) => {
     try {
@@ -60,13 +60,6 @@ router.delete('/refresh_token', (req, res) => {
     }
 });
 
-router.post('/register', async (req, res) => {
-    try {
-        const newUser = await dbHandler.insertUser(req.body);
-        res.json(jwtTokens(newUser));
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
+
 
 module.exports = router;
