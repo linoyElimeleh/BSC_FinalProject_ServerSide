@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const jwt = require('jsonwebtoken');
-const dbHandler = require('../../handlers/dbHandler');
+const dbHandler = require('../../services/models/actions/users');
 const { jwtTokens } = require('../../utils/jwtUtils');
 const { validatePassword } = require('../../utils/authenticationUtils');
 

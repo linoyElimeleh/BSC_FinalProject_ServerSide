@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const db = require('../../handlers/dbHandler');
+const categoriesHandler = require('../../services/models/actions/categories');
 
 router.get('/', async (req, res) => {
-    const results = await db.getCategories();
+    const results = await categoriesHandler.getCategories();
     res.status(200).json(results);
 });
 

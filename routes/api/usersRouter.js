@@ -1,5 +1,5 @@
 const authenticateToken = require('../../middleware/authorization');
-const dbHandler = require('../../handlers/dbHandler');
+const dbHandler = require('../../services/models/actions/users');
 const { jwtTokens } = require('../../utils/jwtUtils');
 const router = require('express').Router();
 
