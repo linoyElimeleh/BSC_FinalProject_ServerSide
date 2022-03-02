@@ -32,6 +32,7 @@
     "passport-local": "^1.0.0",
     "pg": "^8.7.3",
     "swagger-autogen": "^2.19.0",
+    "swagger-jsdoc": "^6.1.0",
     "swagger-ui-express": "^4.3.0"
   }
 }

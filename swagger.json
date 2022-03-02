@@ -1,23 +1,39 @@
 {
-    "swagger": "2.0",
-    "info": {
-      "version": "1.0.0", 
-      "title": "Todo Bom API",
-      "description": "API for Todo Bom app",
-      "license": {
-        "name": "MIT",
-        "url": "https://opensource.org/licenses/MIT"
+  "swagger": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Todo Bom API",
+    "description": "API for Todo Bom app",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "servers": [
+    "http://localhost:8000"
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/beep": {
+      "get": {
+        "tags": [
+          "Alive Check"
+        ],
+        "summary": "Check if the API is up",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
-    },
-    "host": "localhost:8000",
-    "basePath": "/beep",
-    "tags": [
-      {
-        "name": "Is Alive",
-        "description": "Is server alive"
-      }
-    ],
-    "schemes": ["http"],
-    "consumes": ["application/json"],
-    "produces": ["application/json"]
+    }
   }
+}

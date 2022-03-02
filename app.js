@@ -4,17 +4,15 @@ require('dotenv').config();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const errorhandler = require('errorhandler');
-var passport = require("passport");
 const routes = require('./routes');
-var session = require("express-session");
-
+const session = require("express-session");
 
 
 var isProduction = process.env.NODE_ENV === 'production';
 
 const app = express();
 
-const port = process.env.NODE_PORT || 8000;
+const port = process.env.PORT || 8000;
 
 app.use('/public', express.static(__dirname + '/public'));
 
@@ -26,11 +24,6 @@ app.use(require('cookie-parser')());
 app.use(routes);
 
 app.use(cors);
-
-
-
-// app.use(passport.initialize());
-// app.use(passport.session());
 
 app.use(session({ secret: 'todobom' }))
 
