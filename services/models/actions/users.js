@@ -16,7 +16,7 @@ const getUserById = async (userId) => {
 const createUser = async (user) => {
     return await executeTransaction(async (client) => {
         const { display_name, email, birth_date, password, image } = user;
-        const hashedPassword = encryptPassword(password);
+        const hashedPassword = await encryptPassword(password);
         return await client.query(
             'INSERT INTO users (display_name,email,birth_date, password, image) VALUES ($1,$2,$3,$4,$5) RETURNING *'
             , [display_name, email, birth_date, hashedPassword, image]);

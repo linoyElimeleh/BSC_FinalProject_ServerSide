@@ -25,7 +25,11 @@ app.use(routes);
 
 app.use(cors);
 
-app.use(session({ secret: 'todobom' }))
+app.use(session({
+    secret: 'todobom',
+    resave: true,
+    saveUninitialized: true
+}))
 
 if (!isProduction) {
     app.use(errorhandler());
