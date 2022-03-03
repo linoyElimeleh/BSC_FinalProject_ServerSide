@@ -1,4 +1,4 @@
-const { encryptPassword } = require('../../../utils/authenticationUtils');
+const { encryptPassword } = require('../../utils/authenticationUtils');
 const { pool, executeTransaction } = require('../index');
 
 const getAllUsers = async () => {

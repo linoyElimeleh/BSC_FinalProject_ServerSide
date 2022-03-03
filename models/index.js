@@ -1,7 +1,4 @@
 const Pool = require('pg').Pool
-const bcrypt = require('bcrypt');
-const { encryptPassword } = require('../../utils/authenticationUtils');
-const { jwtTokens } = require('../../utils/jwtUtils');
 
 const pool = new Pool({
     user: 'postgres',
@@ -11,7 +8,6 @@ const pool = new Pool({
     port: 5438,
 });
 
-//--------------------- Common ----------------------------
 const executeTransaction = async (callback) => {
     const client = await pool.connect();
     client.query('BEGIN');

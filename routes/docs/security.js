@@ -1,5 +1,5 @@
 module.exports = {
-    security: {
-        bearerAuth: []
-    }
+    // security: {
+    //     ApiKeyAuth: []
+    // }
 }

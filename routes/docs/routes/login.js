@@ -18,7 +18,17 @@ module.exports = {
                 content: {
                     'application/json': {
                         schema: {
-                            $ref: '#/components/schemas/LoginSuccessful'
+                            type: 'object',
+                            properties: {
+                                access_token: {
+                                    type: "string",
+                                    example: "some jwt token..."
+                                },
+                                refresh_token: {
+                                    type: "string",
+                                    example: "some jwt token..."
+                                }
+                            }
                         }
                     }
                 }

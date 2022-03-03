@@ -1,5 +1,6 @@
 const healthCheck = require('./healthCheck');
 const login = require('./login');
+const register = require('./register');
 
 module.exports = {
     paths: {
@@ -9,14 +10,14 @@ module.exports = {
         '/api/auth/login': {
             ...login
         },
+        '/api/auth/register': {
+            ...register
+        },
         '/api/test-auth': {
             get: {
                 tags: ['Test Route'],
                 description: 'test that auth works',
                 operationId: 'beep',
-                security: {
-                    bearerAuth: []
-                },
                 responses: {
                     '200': {
                         description: "Server is alive",
@@ -28,7 +29,10 @@ module.exports = {
                             }
                         }
                     }
-                }
+                },
+                security: {
+                    ApiKeyAuth: []
+                },
             }
         }
     }

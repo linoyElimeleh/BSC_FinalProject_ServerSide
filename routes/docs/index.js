@@ -6,14 +6,14 @@ const basicInfo = require('./basicInfo');
 const servers = require('./servers');
 const security = require('./security');
 const components = require('./components');
-const api = require('./api');
+const routes = require('./routes');
 
 const docs = {
     ...basicInfo,
     ...servers,
     ...components,
     ...security,
-    ...api
+    ...routes
 }
 
 router.use('/', swaggerUI.serve, swaggerUI.setup(docs));

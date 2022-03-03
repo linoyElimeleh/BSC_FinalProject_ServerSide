@@ -23,28 +23,38 @@ module.exports = {
                     }
                 }
             },
-            LoginSuccessful: {
+            RegisterRequest: {
                 type: 'object',
                 properties: {
-                    access_token: {
+                    email: {
                         type: "string",
-                        example: "some jwt token..."
+                        example: "user@email.com"
                     },
-                    refresh_token: {
+                    password: {
                         type: "string",
-                        example: "some jwt token..."
+                        example: "supersecret123"
+                    },
+                    displayName: {
+                        type: "string",
+                        example: "User user"
+                    },
+                    birthDate: {
+                        type: "date",
+                        example: "1997-01-01"
+                    },
+                    image: {
+                        type: "string",
+                        example: "https://some-image.com"
                     }
                 }
             }
         },
         securitySchemes: {
-            bearerAuth: {
-                type: 'http',
-                scheme: 'bearer',
-                bearerFormat: 'JWT',
-                name: 'Authorization',
-                in: 'header'
-            },
+            ApiKeyAuth: {
+                type: "apiKey",
+                in: "header",
+                name: "Authorization"
+            }
         }
     }
 }

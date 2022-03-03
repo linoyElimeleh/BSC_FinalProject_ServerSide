@@ -1,11 +1,11 @@
 const authenticateToken = require('../../middleware/authorization');
-const dbHandler = require('../../services/models/actions/tasks');
+const TaskService = require('../../services/taskService');
 const router = require('express').Router();
 
 router.post('/', authenticateToken, async (req, res) => {
     try {
-        const newTask = await dbHandler.createTask(req.body);
-        res.json(newTask.rows[0]);
+        const newTask = await TaskService.createTask(req.body);
+        res.json(newTask);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -13,7 +13,7 @@ router.post('/', authenticateToken, async (req, res) => {
 
 router.put('/', authenticateToken, async (req, res) => {
     try {
-        await dbHandler.updateTask(req.body);
+        await TaskService.updateTask(req.body);
         res.sendStatus(200);
     } catch (error) {
         res.status(500).json({ error: error.message });
