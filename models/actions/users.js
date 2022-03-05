@@ -44,5 +44,6 @@ module.exports = {
     getUserByEmail,
     getUserById,
     createUser,
-    updateUser
+    updateUser,
+    getUserGroups
 };
