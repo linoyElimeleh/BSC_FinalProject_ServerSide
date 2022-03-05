@@ -17,6 +17,13 @@ class UserService {
         return tasks.rows;
     }
 
+    static getCurrentUserGroups = async (email) => {
+        const userDetails = await usersDbHandler.getUserByEmail(email);
+        const userId = userDetails.rows[0].id;
+        const groups = await usersDbHandler.getUserGroups(userId);
+        return groups.rows;
+    }
+
     static registerUser = async (user) => {
         const newUser = await usersDbHandler.createUser(user);
         return jwtTokens(newUser);

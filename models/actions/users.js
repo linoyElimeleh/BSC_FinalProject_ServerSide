@@ -13,6 +13,12 @@ const getUserById = async (userId) => {
     return await pool.query('SELECT * FROM users WHERE id = $1', [userId]);
 }
 
+const getUserGroups = async (userId) => {
+    return await pool.query(`SELECT * FROM groups 
+                            WHERE groups.id IN 
+                            (SELECT group_id FROM group_members WHERE user_id=$1)`, [userId]);
+}
+
 const createUser = async (user) => {
     return await executeTransaction(async (client) => {
         const { display_name, email, birth_date, password, image } = user;
