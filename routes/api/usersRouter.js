@@ -24,6 +24,16 @@ router.get('/me/tasks', authenticateToken, async (req, res) => {
     }
 });
 
+router.get('/me/groups', authenticateToken, async (req, res) => {
+    try {
+        const email = req.user.email;
+        const groups = await UserService.getCurrentUserGroups(email);
+        res.json(groups);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 router.post('/register', async (req, res) => {
     try {
         const newUser = await UserService.registerUser(req.body);
