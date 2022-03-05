@@ -91,4 +91,3 @@ CREATE TABLE weekly_badges (
   date date,
   score int
 );
-

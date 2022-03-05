@@ -10,7 +10,7 @@ module.exports = {
         '/api/auth/login': {
             ...login
         },
-        '/api/auth/register': {
+        '/api/users/register': {
             ...register
         },
         '/api/test-auth': {

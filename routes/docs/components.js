@@ -34,11 +34,11 @@ module.exports = {
                         type: "string",
                         example: "supersecret123"
                     },
-                    displayName: {
+                    display_name: {
                         type: "string",
                         example: "User user"
                     },
-                    birthDate: {
+                    birth_date: {
                         type: "date",
                         example: "1997-01-01"
                     },

@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const swaggerJsDocs = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express');
 
 const basicInfo = require('./basicInfo');
