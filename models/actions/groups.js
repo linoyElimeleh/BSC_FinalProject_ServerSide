@@ -9,12 +9,17 @@ const getGroupById = async (groupId) => {
     return await pool.query('SELECT * FROM groups WHERE id = $1', [groupId]);
 }
 
-const createGroup = async (group) => {
+const createGroup = async (group, userId) => {
     return await executeTransaction(async (client) => {
         const { group_name, description, image } = group;
-        return await client.query(
+        let newGroup = await client.query(
             'INSERT INTO groups (name, description, image) VALUES ($1,$2,$3) RETURNING *'
             , [group_name, description, image]);
+        newGroup = newGroup.rows[0];
+        await client.query(
+            'INSERT INTO group_members (group_id, user_id, is_admin, role_id, score) VALUES ($1, $2, $3, $4, $5) RETURNING *'
+            , [newGroup.id, userId, true, null, 0]);
+        return newGroup;
     })
 }
 

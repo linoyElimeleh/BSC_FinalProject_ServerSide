@@ -15,14 +15,18 @@ class GroupService {
         return members.rows;
     }
 
+    static addGroupMembers = async (groupId, idsToAdd) => {
+        await membersDbHandler.addGroupMembers(groupId, idsToAdd);
+    }
+
     static getGroupTasks = async (groupId) => {
         const tasks = await tasksDbHandler.getAllGroupTasks(groupId);
         return tasks.rows;
     }
 
-    static createGroup = async (group) => {
-        const newGroup = await groupsDbHandler.createGroup(group);
-        return newGroup.rows[0];
+    static createGroup = async (group, userId) => {
+        const newGroup = await groupsDbHandler.createGroup(group, userId);
+        return newGroup;
     }
 
     static updateGroup = async (group) => {

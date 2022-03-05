@@ -39,11 +39,20 @@ const updateUser = async (user) => {
     });
 }
 
+const searchUsers = async (query) => {
+    return await executeTransaction(async (client) => {
+        return await client.query(
+            `SELECT id, display_name, email FROM users WHERE display_name LIKE $1 OR email LIKE $1`,
+            [`%${query}%`]);
+    });
+}
+
 module.exports = {
     getAllUsers,
     getUserByEmail,
     getUserById,
     createUser,
     updateUser,
-    getUserGroups
+    getUserGroups,
+    searchUsers
 };

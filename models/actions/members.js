@@ -1,4 +1,4 @@
-const { pool } = require('../index');
+const { pool, executeTransaction } = require('../index');
 
 const getAllGroupMembers = async (groupId) => {
     return await pool.query(
@@ -10,6 +10,18 @@ const getAllGroupMembers = async (groupId) => {
     );
 };
 
+const addGroupMembers = async (groupId, idsToAdd) => {
+    await executeTransaction(async (client) => {
+        await client.query(
+            `INSERT INTO group_members(group_id, user_id) 
+            VALUES ($1, UNNEST($2::int[]))`,
+            [groupId, idsToAdd]
+        );
+    })
+
+};
+
 module.exports = {
-    getAllGroupMembers
+    getAllGroupMembers,
+    addGroupMembers
 };

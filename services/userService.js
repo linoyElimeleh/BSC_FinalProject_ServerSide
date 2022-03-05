@@ -32,6 +32,11 @@ class UserService {
     static updateUser = async (user) => {
         await usersDbHandler.updateUser(user);
     }
+
+    static searchUsers = async (query) => {
+        const searchResults = await usersDbHandler.searchUsers(query);
+        return searchResults.rows;
+    }
 }
 
 module.exports = UserService;
