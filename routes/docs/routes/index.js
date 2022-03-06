@@ -1,6 +1,7 @@
 const healthCheck = require('./healthCheck');
 const login = require('./login');
 const register = require('./register');
+const refreshToken = require('./refreshToken');
 
 module.exports = {
     paths: {
@@ -9,6 +10,9 @@ module.exports = {
         },
         '/api/auth/login': {
             ...login
+        },
+        '/api/auth/refresh_token': {
+            ...refreshToken
         },
         '/api/users/register': {
             ...register

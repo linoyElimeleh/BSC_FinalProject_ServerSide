@@ -1,20 +1,16 @@
 module.exports = {
-    post: {
+    get: {
         tags: ['Login'],
-        description: 'Login to the app',
-        operationId: 'login',
+        description: 'Get the refresh token',
+        operationId: 'refresh_token',
         requestBody: {
             content: {
-                'application/json': {
-                    schema: {
-                        $ref: '#components/schemas/LoginRequest'
-                    }
-                }
+                'application/json': {}
             }
         },
         responses: {
             '200': {
-                description: "Login successful",
+                description: "Get refresh token and access token successfully",
                 content: {
                     'application/json': {
                         schema: {
@@ -35,4 +31,19 @@ module.exports = {
             }
         }
     },
+    delete: {
+        tags: ['Login'],
+        description: 'Delete the refresh token',
+        operationId: 'refresh_token',
+        requestBody: {
+            content: {
+                'application/json': {}
+            }
+        },
+        responses: {
+            '200': {
+                description: "Refresh token deleted.",
+            }
+        }
+    }
 }

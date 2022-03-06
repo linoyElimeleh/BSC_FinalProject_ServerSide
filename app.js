@@ -8,7 +8,7 @@ const routes = require('./routes');
 const session = require("express-session");
 
 
-var isProduction = process.env.NODE_ENV === 'production';
+const isProduction = process.env.NODE_ENV === 'production';
 
 const app = express();
 
@@ -50,7 +50,7 @@ if (!isProduction) {
 
 /// catch 404 and forward to error handler
 app.use(function (req, res, next) {
-    var err = new Error('Not Found');
+    const err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
