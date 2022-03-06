@@ -1,6 +1,6 @@
 module.exports = {
     get: {
-        tags: ['Login'],
+        tags: ['Authentication'],
         description: 'Get the refresh token',
         operationId: 'refresh_token',
         requestBody: {
@@ -32,7 +32,7 @@ module.exports = {
         }
     },
     delete: {
-        tags: ['Login'],
+        tags: ['Authentication'],
         description: 'Delete the refresh token',
         operationId: 'refresh_token',
         requestBody: {

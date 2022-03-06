@@ -1,6 +1,6 @@
 module.exports = {
     post: {
-        tags: ['Register'],
+        tags: ['Authentication'],
         description: 'Register to the app',
         operationId: 'register',
         requestBody: {

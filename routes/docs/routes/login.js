@@ -1,6 +1,6 @@
 module.exports = {
     post: {
-        tags: ['Login'],
+        tags: ['Authentication'],
         description: 'Login to the app',
         operationId: 'login',
         requestBody: {

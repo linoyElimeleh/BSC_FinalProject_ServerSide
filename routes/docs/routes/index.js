@@ -2,6 +2,7 @@ const healthCheck = require('./healthCheck');
 const login = require('./login');
 const register = require('./register');
 const refreshToken = require('./refreshToken');
+const categories = require('./categories');
 
 module.exports = {
     paths: {
@@ -38,6 +39,9 @@ module.exports = {
                     ApiKeyAuth: []
                 },
             }
+        },
+        '/api/categories/': {
+            ...categories
         }
     }
 }
