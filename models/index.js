@@ -18,5 +18,5 @@ const executeTransaction = async (callback) => {
 
 module.exports = {
   pool,
-  executeTransaction,
+  executeTransaction
 };

@@ -1,6 +1,8 @@
 const groupsDbHandler = require('../models/actions/groups');
 const tasksDbHandler = require('../models/actions/tasks');
 const membersDbHandler = require('../models/actions/members');
+const UserNotMemberOfGroup = require('../exceptions/UserNotMemberOfGroup');
+const UserService = require('./userService');
 
 class GroupService {
     constructor() { }
@@ -31,6 +33,10 @@ class GroupService {
 
     static updateGroup = async (group) => {
         await groupsDbHandler.updateGroup(group);
+    }
+
+    static isUserMemberOfGroup = async (groupId, userId) => {
+        return !!(await groupsDbHandler.isUserMemberOfGroup(groupId, userId))?.rows?.length;
     }
 }
 
