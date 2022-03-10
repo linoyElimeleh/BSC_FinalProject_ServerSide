@@ -1,7 +1,7 @@
 const GroupService = require("../services/groupService");
-const UserService = require("../services/userService");
 const GroupNotExist = require("../exceptions/GroupNotExist");
 const UserNotMemberOfGroup = require("../exceptions/UserNotMemberOfGroup");
+const UserNotAdmin = require("../exceptions/UserNotAdmin");
 
 const groupValidation = async (req, res, next) => {
     try {
@@ -29,4 +29,25 @@ const groupValidation = async (req, res, next) => {
     }
 }
 
-module.exports = groupValidation;
+const adminValidation = async (req, res, next) => {
+    try {
+        const groupId = req.group.id;
+        const userId = req.user.id;
+        const isAdmin = await GroupService.isUserAdmin(groupId, userId);
+        if (!isAdmin) {
+            throw new UserNotAdmin();
+        }
+        next();
+    } catch (e) {
+        if (e instanceof UserNotAdmin) {
+            res.status(401).json({ error: e.message });
+            return;
+        }
+        throw e;
+    }
+}
+
+module.exports = {
+    groupValidation,
+    adminValidation
+};

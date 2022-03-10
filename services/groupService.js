@@ -38,6 +38,11 @@ class GroupService {
     static isUserMemberOfGroup = async (groupId, userId) => {
         return !!(await groupsDbHandler.isUserMemberOfGroup(groupId, userId))?.rows?.length;
     }
+
+    static isUserAdmin = async (groupId, userId) => {
+        const isAdmin = await groupsDbHandler.isUserAdmin(groupId, userId);
+        return isAdmin?.rows[0]?.is_admin;
+    }
 }
 
 module.exports = GroupService;

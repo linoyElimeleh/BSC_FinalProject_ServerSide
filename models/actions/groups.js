@@ -36,10 +36,16 @@ const updateGroup = async (group) => {
     })
 }
 
+const isUserAdmin = async (groupId, userId) => {
+    return await pool.query('SELECT is_admin FROM group_members WHERE group_id=$1 AND user_id=$2', [groupId, userId]);
+
+}
+
 module.exports = {
     getAllGroups,
     getGroupById,
     createGroup,
     updateGroup,
-    isUserMemberOfGroup
+    isUserMemberOfGroup,
+    isUserAdmin
 };
