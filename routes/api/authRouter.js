@@ -6,7 +6,6 @@ const { validatePassword } = require('../../utils/authenticationUtils');
 
 router.post('/login', async (req, res) => {
     try {
-        console.log(req.cookies, req.get('origin'));
         const { email, password } = req.body;
         const users = await dbHandler.getUserByEmail(email);
         if (users.rows.length === 0) return res.status(401).json({ error: "Email is incorrect" });
