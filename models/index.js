@@ -7,12 +7,12 @@ const pool = new Pool({
   },
 });
 
-
 const executeTransaction = async (callback) => {
-  const client = await pool.connect();
-  client.query("BEGIN");
-  const queryResult = await callback(client);
-  client.query("COMMIT");
+  //const client = await pool.connect();
+  pool.query("BEGIN");
+  const queryResult = await callback(pool);
+  pool.query("COMMIT");
+  //client.release();
   return queryResult;
 };
 

@@ -41,7 +41,7 @@ class GroupService {
 
     static isUserAdmin = async (groupId, userId) => {
         const isAdmin = await groupsDbHandler.isUserAdmin(groupId, userId);
-        return isAdmin?.rows[0]?.is_admin;
+        return isAdmin?.rows[0]?.is_admin ?? false;
     }
 }
 
