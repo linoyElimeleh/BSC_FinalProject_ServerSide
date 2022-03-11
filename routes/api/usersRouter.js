@@ -15,9 +15,8 @@ router.get('/me', authenticateToken, async (req, res) => {
 
 router.get('/me/tasks', authenticateToken, async (req, res) => {
     try {
-        const email = req.user.email;
         const groupId = req.query.groupId;
-        const tasks = await UserService.getCurrentUserTasks(email, groupId);
+        const tasks = await UserService.getCurrentUserTasks(req.user.id, groupId);
         res.json(tasks);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -26,8 +25,7 @@ router.get('/me/tasks', authenticateToken, async (req, res) => {
 
 router.get('/me/groups', authenticateToken, async (req, res) => {
     try {
-        const email = req.user.email;
-        const groups = await UserService.getCurrentUserGroups(email);
+        const groups = await UserService.getCurrentUserGroups(req.user.id);
         res.json(groups);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -39,6 +37,10 @@ router.post('/register', async (req, res) => {
         const newUser = await UserService.registerUser(req.body);
         res.json(newUser);
     } catch (error) {
+        if (error.code === '23505') {
+            res.status(400).json({ error: 'Email already exist.' });
+            return;
+        }
         res.status(500).json({ error: error.message });
     }
 });

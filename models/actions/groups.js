@@ -9,6 +9,10 @@ const getGroupById = async (groupId) => {
     return await pool.query('SELECT * FROM groups WHERE id = $1', [groupId]);
 }
 
+const isUserMemberOfGroup = async (groupId, userId) => {
+    return await pool.query('SELECT * FROM group_members WHERE group_id=$1 AND user_id=$2', [groupId, userId]);
+}
+
 const createGroup = async (group, userId) => {
     return await executeTransaction(async (client) => {
         const { group_name, description, image } = group;
@@ -32,9 +36,16 @@ const updateGroup = async (group) => {
     })
 }
 
+const isUserAdmin = async (groupId, userId) => {
+    return await pool.query('SELECT is_admin FROM group_members WHERE group_id=$1 AND user_id=$2', [groupId, userId]);
+
+}
+
 module.exports = {
     getAllGroups,
     getGroupById,
     createGroup,
-    updateGroup
+    updateGroup,
+    isUserMemberOfGroup,
+    isUserAdmin
 };

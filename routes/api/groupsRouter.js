@@ -1,31 +1,28 @@
 const authenticateToken = require('../../middleware/authorization');
 const GroupService = require('../../services/groupService');
 const UserService = require('../../services/userService');
+const { groupValidation, adminValidation } = require('../../middleware/groupValidations');
 const router = require('express').Router();
 
-
-router.get('/:id', authenticateToken, async (req, res) => {
+router.get('/:id', authenticateToken, groupValidation, async (req, res) => {
     try {
-        const groupId = req.params.id;
-        const group = await GroupService.getGroupById(groupId);
-        const members = await GroupService.getGroupMembers(groupId);
-        res.json({ ...group, members });
+        const members = await GroupService.getGroupMembers(req.params.id);
+        res.json({ ...req.group, members });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });
 
-router.get('/:id/members', authenticateToken, async (req, res) => {
+router.get('/:id/members', authenticateToken, groupValidation, async (req, res) => {
     try {
-        const groupId = req.params.id;
-        const members = await GroupService.getGroupMembers(groupId);
+        const members = await GroupService.getGroupMembers(req.params.id);
         res.json(members);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });
 
-router.post('/:id/add_members', authenticateToken, async (req, res) => {
+router.post('/:id/add_members', authenticateToken, groupValidation, adminValidation, async (req, res) => {
     try {
         const groupId = req.params.id;
         const idsToAdd = req.body.members;
@@ -36,7 +33,7 @@ router.post('/:id/add_members', authenticateToken, async (req, res) => {
     }
 });
 
-router.get('/:id/tasks', authenticateToken, async (req, res) => {
+router.get('/:id/tasks', authenticateToken, groupValidation, async (req, res) => {
     try {
         const groupId = req.params.id;
         const tasks = await GroupService.getGroupTasks(groupId);
@@ -48,15 +45,14 @@ router.get('/:id/tasks', authenticateToken, async (req, res) => {
 
 router.post('/', authenticateToken, async (req, res) => {
     try {
-        const userDetails = await UserService.getCurrentUserDetails(req.user.email);
-        const newGroup = await GroupService.createGroup(req.body, userDetails.id);
+        const newGroup = await GroupService.createGroup(req.body, req.user.id);
         res.json(newGroup);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });
 
-router.put('/', authenticateToken, async (req, res) => {
+router.put('/', authenticateToken, groupValidation, adminValidation, async (req, res) => {
     try {
         await GroupService.updateGroup(req.body);
         res.sendStatus(200);

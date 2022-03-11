@@ -10,16 +10,12 @@ class UserService {
         return userDetails.rows[0];
     }
 
-    static getCurrentUserTasks = async (email, groupId) => {
-        const userDetails = await usersDbHandler.getUserByEmail(email);
-        const userId = userDetails.rows[0].id;
+    static getCurrentUserTasks = async (userId, groupId) => {
         const tasks = await tasksDbHandler.getAllMemberTasksByGroup(groupId, userId);
         return tasks.rows;
     }
 
-    static getCurrentUserGroups = async (email) => {
-        const userDetails = await usersDbHandler.getUserByEmail(email);
-        const userId = userDetails.rows[0].id;
+    static getCurrentUserGroups = async (userId) => {
         const groups = await usersDbHandler.getUserGroups(userId);
         return groups.rows;
     }
