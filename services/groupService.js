@@ -1,8 +1,6 @@
 const groupsDbHandler = require('../models/actions/groups');
 const tasksDbHandler = require('../models/actions/tasks');
 const membersDbHandler = require('../models/actions/members');
-const UserNotMemberOfGroup = require('../exceptions/UserNotMemberOfGroup');
-const UserService = require('./userService');
 
 class GroupService {
     constructor() { }
