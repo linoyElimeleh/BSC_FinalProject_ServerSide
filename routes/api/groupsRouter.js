@@ -1,6 +1,5 @@
 const authenticateToken = require('../../middleware/authorization');
 const GroupService = require('../../services/groupService');
-const UserService = require('../../services/userService');
 const { groupValidation, adminValidation } = require('../../middleware/groupValidations');
 const router = require('express').Router();
 
@@ -22,7 +21,7 @@ router.get('/:id/members', authenticateToken, groupValidation, async (req, res) 
     }
 });
 
-router.post('/:id/add_members', authenticateToken, groupValidation, adminValidation, async (req, res) => {
+router.post('/:id/add_members', authenticateToken, groupValidation, async (req, res) => {
     try {
         const groupId = req.params.id;
         const idsToAdd = req.body.members;
@@ -52,7 +51,7 @@ router.post('/', authenticateToken, async (req, res) => {
     }
 });
 
-router.put('/', authenticateToken, groupValidation, adminValidation, async (req, res) => {
+router.put('/', authenticateToken, groupValidation, async (req, res) => {
     try {
         await GroupService.updateGroup(req.body);
         res.sendStatus(200);
