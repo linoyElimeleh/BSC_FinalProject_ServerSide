@@ -8,12 +8,12 @@ router.post('/login', async (req, res) => {
     try {
         const { email, password } = req.body;
         const users = await dbHandler.getUserByEmail(email);
-        if (users.rows.length === 0) return res.status(401).json({ error: "Email is incorrect" });
+        if (users.rows.length === 0) return res.status(400).json({ error: "Email or password are incorrect" });
         //PASSWORD CHECK
         const validPassword = await validatePassword(password, users.rows[0].password);
-        if (!validPassword) return res.status(401).json({ error: "Incorrect password" });
+        if (!validPassword) return res.status(400).json({ error: "Email or password are incorrect" });
         //JWT
-        const tokens = jwtTokens(users.rows[0]);//Gets access and refresh tokens
+        const tokens = jwtTokens(users.rows[0]); //Gets access and refresh tokens
         res.cookie('refresh_token', tokens.refreshToken, {
             ...(process.env.COOKIE_DOMAIN && { domain: process.env.COOKIE_DOMAIN }),
             httpOnly: true,
