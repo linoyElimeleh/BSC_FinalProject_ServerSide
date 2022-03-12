@@ -49,7 +49,7 @@ const isUserEligibleToJoin = async (req, res, next) => {
             return;
         }
         else if (e instanceof UserAlreadyMemberOfGroup) {
-            res.status(404).json({ error: e.message });
+            res.status(400).json({ error: e.message });
             return;
         }
         throw e;
