@@ -36,9 +36,7 @@ module.exports = {
                         }
                     }
                 },
-                // security: {
-                //     bearerAuth: []
-                // }
+                security: [{bearerAuth: []}]
             }
         },
         '/api/categories/': {
