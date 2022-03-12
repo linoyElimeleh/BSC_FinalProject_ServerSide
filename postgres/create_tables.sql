@@ -28,6 +28,7 @@ CREATE TABLE groups (
   name text NOT NULL,
   description text,
   image bytea,
+  invite_code text,
   PRIMARY KEY (id)
 );
 CREATE TABLE member_roles (

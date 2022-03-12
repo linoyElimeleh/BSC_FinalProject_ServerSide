@@ -1,6 +1,7 @@
 const GroupService = require("../services/groupService");
 const GroupNotExist = require("../exceptions/GroupNotExist");
 const UserNotMemberOfGroup = require("../exceptions/UserNotMemberOfGroup");
+const UserAlreadyMemberOfGroup = require("../exceptions/UserAlreadyMemberOfGroup");
 const UserNotAdmin = require("../exceptions/UserNotAdmin");
 
 const groupValidation = async (req, res, next) => {
@@ -30,6 +31,32 @@ const groupValidation = async (req, res, next) => {
     }
 }
 
+const isUserEligibleToJoin = async (req, res, next) => {
+    try {
+        const groupInviteCode = req.body.invite_code;
+        const group = await GroupService.getGroupByInviteCode(groupInviteCode);
+        if (!group) {
+            throw new GroupNotExist()
+        }
+        req.group = group;
+        const isMember = await GroupService.isUserMemberOfGroup(group.id, req.user.id);
+        if (isMember) {
+            throw new UserAlreadyMemberOfGroup();
+        }
+        next();
+    } catch (e) {
+        if (e instanceof GroupNotExist) {
+            res.status(404).json({ error: e.message });
+            return;
+        }
+        else if (e instanceof UserAlreadyMemberOfGroup) {
+            res.status(400).json({ error: e.message });
+            return;
+        }
+        throw e;
+    }
+}
+
 const adminValidation = async (req, res, next) => {
     try {
         const groupId = req.group.id;
@@ -50,5 +77,6 @@ const adminValidation = async (req, res, next) => {
 
 module.exports = {
     groupValidation,
+    isUserEligibleToJoin,
     adminValidation
 };

@@ -7,6 +7,7 @@ const usersRouter = require('./usersRouter');
 const groupsRouter = require('./groupsRouter');
 const tasksRouter = require('./tasksRouter');
 const searchRouter = require('./searchRouter');
+const joinGroupRouter = require('./joinRouter');
 
 router.use('/', healthCheckRouter);
 router.use('/categories', categoriesRouter);
@@ -16,6 +17,7 @@ router.use('/users', usersRouter);
 router.use('/groups', groupsRouter);
 router.use('/tasks', tasksRouter);
 router.use('/search', searchRouter);
+router.use('/join', joinGroupRouter);
 
 router.use((err, req, res, next) => {
   if (err.name === 'ValidationError') {
