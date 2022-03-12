@@ -1,24 +1,24 @@
 module.exports = {
     get: {
-        tags: ['Search'],
-        description: 'Get search request',
-        operationId: 'search',
+        tags: ['User'],
+        description: 'Get user groups',
+        operationId: 'user',
         parameters: [
             {
-                "name": "query",
+                "name": "userId",
                 "in": "query",
-                "type": "string",
+                "type": "integer",
                 "required": true,
-                "description": "email or display_name"
+                "description": "user id"
             }
         ],
         responses: {
             '200': {
-                description: "Get Users request successful",
+                description: "Returns user groups successful",
                 content: {
                     'application/json': {
                         schema: {
-                            $ref: '#components/schemas/UsersAfterSearch'
+                            $ref: '#components/schemas/GetUserGroups'
                         }
                     }
                 }

@@ -13,7 +13,7 @@ const createTask = async (task) => {
 
 const updateTask = async (task) => {
     await executeTransaction(async (client) => {
-        const { id, title, description, category_id, due_date, done, repeat, end_repeat, urgent, snooze_interval, score } = group;
+        const { id, title, description, category_id, due_date, done, repeat, end_repeat, urgent, snooze_interval, score } = task;
         await client.query(
             `UPDATE tasks SET title=$1, description=$2, category_id=$3, due_date=$4, done=$5,
                 repeat=$6, end_repeat=$7, urgent=$8, snooze_interval=$9, score=$10
@@ -32,12 +32,12 @@ const getAllGroupTasks = async (groupId) => {
     );
 };
 
-const getAllMemberTasksByGroup = async (groupId, memeberId) => {
+const getAllMemberTasksByGroup = async (groupId, memberId) => {
     return await pool.query(
         `SELECT * FROM tasks
             LEFT OUTER JOIN (select * from group_user_tasks where group_id=$1 and user_id=$2) AS user_tasks 
             ON user_tasks.task_id = tasks.id`,
-        [groupId, memeberId]
+        [groupId, memberId]
     );
 };
 

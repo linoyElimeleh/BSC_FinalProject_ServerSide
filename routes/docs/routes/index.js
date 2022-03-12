@@ -8,7 +8,12 @@ const groupGetAndUpdateData = require('./group/groupGetAndUpdateData');
 const getGroupMembers = require('./group/getGroupMembers');
 const addGroupsMembers = require('./group/addGroupsMembers');
 const getGroupTasks = require('./group/getGroupTask');
-const users = require('./search/users');
+const searchUsers = require('./search/users');
+const tasks = require('./tasks/task');
+const getUserDetails = require('./user/getUserDetails');
+const getUserTasks = require('./user/getUserTasks');
+const getUserGroups = require('./user/getUserGroups');
+const updateUserDetails = require('./user/updateUserDetails');
 
 module.exports = {
     paths: {
@@ -63,7 +68,22 @@ module.exports = {
             ...getGroupTasks
         },
         '/api/search/users': {
-            ...users
+            ...searchUsers
+        },
+        '/api/tasks': {
+            ...tasks
+        },
+        '/api/users/me': {
+            ...getUserDetails
+        },
+        '/api/users/me/tasks': {
+            ...getUserTasks
+        },
+        '/api/users/me/groups': {
+            ...getUserGroups
+        },
+        '/api/users/': {
+            ...updateUserDetails
         },
     }
 }

@@ -3,6 +3,9 @@ const UserService = require('../../services/userService');
 const router = require('express').Router();
 
 
+/**
+ * Return the user details by email
+ */
 router.get('/me', authenticateToken, async (req, res) => {
     try {
         const email = req.user.email;
@@ -13,25 +16,35 @@ router.get('/me', authenticateToken, async (req, res) => {
     }
 });
 
+/**
+ * Return the user task in the group by userId and groupId
+ */
 router.get('/me/tasks', authenticateToken, async (req, res) => {
     try {
         const groupId = req.query.groupId;
-        const tasks = await UserService.getCurrentUserTasks(req.user.id, groupId);
+        const userId = req.query.userId;
+        const tasks = await UserService.getCurrentUserTasks(userId, groupId);
         res.json(tasks);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });
 
+/**
+ * This request returns the groups of the user
+ */
 router.get('/me/groups', authenticateToken, async (req, res) => {
     try {
-        const groups = await UserService.getCurrentUserGroups(req.user.id);
+        const groups = await UserService.getCurrentUserGroups(req.query.userId);
         res.json(groups);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });
 
+/**
+ * Register to our app request with body contains email,password, display_name, birth_date, image
+ */
 router.post('/register', async (req, res) => {
     try {
         const newUser = await UserService.registerUser(req.body);
@@ -45,6 +58,9 @@ router.post('/register', async (req, res) => {
     }
 });
 
+/**
+ * This request update user by body contains : id, display_name, image
+ */
 router.put('/', authenticateToken, async (req, res) => {
     try {
         await UserService.updateUser(req.body);

@@ -2,6 +2,9 @@ const authenticateToken = require('../../middleware/authorization');
 const TaskService = require('../../services/taskService');
 const router = require('express').Router();
 
+/**
+ * Create a new task with a body contains title,description, and more.
+ */
 router.post('/', authenticateToken, async (req, res) => {
     try {
         const newTask = await TaskService.createTask(req.body);
@@ -11,6 +14,9 @@ router.post('/', authenticateToken, async (req, res) => {
     }
 });
 
+/**
+ * This request updates the task with a body with the following details: title, description, and more.
+ */
 router.put('/', authenticateToken, async (req, res) => {
     try {
         await TaskService.updateTask(req.body);

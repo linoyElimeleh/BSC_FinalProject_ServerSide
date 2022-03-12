@@ -12,7 +12,7 @@ router.use('/', healthCheckRouter);
 router.use('/categories', categoriesRouter);
 router.use('/auth', authRouter);
 router.use('/test-auth', testRouter);
-router.use('/search', usersRouter);
+router.use('/users', usersRouter);
 router.use('/groups', groupsRouter);
 router.use('/tasks', tasksRouter);
 router.use('/search', searchRouter);

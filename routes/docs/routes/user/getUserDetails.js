@@ -1,24 +1,24 @@
 module.exports = {
     get: {
-        tags: ['Search'],
-        description: 'Get search request',
-        operationId: 'search',
+        tags: ['User'],
+        description: 'Get user full details',
+        operationId: 'user',
         parameters: [
             {
-                "name": "query",
+                "name": "email",
                 "in": "query",
                 "type": "string",
                 "required": true,
-                "description": "email or display_name"
+                "description": "user email"
             }
         ],
         responses: {
             '200': {
-                description: "Get Users request successful",
+                description: "Returns user details successful",
                 content: {
                     'application/json': {
                         schema: {
-                            $ref: '#components/schemas/UsersAfterSearch'
+                            $ref: '#components/schemas/UserFullDetails'
                         }
                     }
                 }

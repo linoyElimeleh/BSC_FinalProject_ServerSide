@@ -29,7 +29,7 @@ const createGroup = async (group, userId) => {
 
 const updateGroup = async (group, groupId) => {
     await executeTransaction(async (client) => {
-        const {id, group_name, description, image} = group;
+        const {group_name, description, image} = group;
         await client.query(
             'UPDATE groups SET name=$1, description=$2, image=$3 WHERE id=$4 RETURNING *'
             , [group_name, description, image, groupId]);
