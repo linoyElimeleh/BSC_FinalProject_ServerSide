@@ -3,7 +3,8 @@ const login = require('./login');
 const register = require('./register');
 const refreshToken = require('./refreshToken');
 const categories = require('./categories');
-const groups = require('./groups');
+const createGroup = require('./createGroup');
+const groupGetAndUpdateData = require('./groupGetAndUpdateData');
 
 module.exports = {
     paths: {
@@ -43,7 +44,10 @@ module.exports = {
             ...categories
         },
         '/api/groups/': {
-            ...groups
+            ...createGroup
+        },
+        '/api/groups/{id}': {
+            ...groupGetAndUpdateData
         }
     }
 }

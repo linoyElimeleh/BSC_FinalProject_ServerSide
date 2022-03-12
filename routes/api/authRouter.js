@@ -4,6 +4,9 @@ const dbHandler = require('../../models/actions/users');
 const { jwtTokens } = require('../../utils/jwtUtils');
 const { validatePassword } = require('../../utils/authenticationUtils');
 
+/**
+ * Login request
+ */
 router.post('/login', async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -27,6 +30,9 @@ router.post('/login', async (req, res) => {
 
 });
 
+/**
+ * Return the refresh and access token
+ */
 router.get('/refresh_token', (req, res) => {
     try {
         const refreshToken = req.cookies.refresh_token;
@@ -50,6 +56,9 @@ router.get('/refresh_token', (req, res) => {
     }
 });
 
+/**
+ * Delete the refresh token
+ */
 router.delete('/refresh_token', (req, res) => {
     try {
         res.clearCookie('refresh_token');
@@ -58,7 +67,5 @@ router.delete('/refresh_token', (req, res) => {
         res.status(401).json({ error: error.message });
     }
 });
-
-
 
 module.exports = router;

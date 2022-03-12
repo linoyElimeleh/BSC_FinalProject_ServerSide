@@ -29,8 +29,8 @@ class GroupService {
         return newGroup;
     }
 
-    static updateGroup = async (group) => {
-        await groupsDbHandler.updateGroup(group);
+    static updateGroup = async (group, groupId) => {
+        await groupsDbHandler.updateGroup(group, groupId);
     }
 
     static isUserMemberOfGroup = async (groupId, userId) => {
