@@ -15,6 +15,9 @@ router.get('/:id', authenticateToken, groupValidation, async (req, res) => {
     }
 });
 
+/**
+ * Return the group members by group id
+ */
 router.get('/:id/members', authenticateToken, groupValidation, async (req, res) => {
     try {
         const members = await GroupService.getGroupMembers(req.params.id);
@@ -24,6 +27,9 @@ router.get('/:id/members', authenticateToken, groupValidation, async (req, res) 
     }
 });
 
+/**
+ * This request adds new members to exist group by group id and members ids array list
+ */
 router.post('/:id/add_members', authenticateToken, groupValidation, adminValidation, async (req, res) => {
     try {
         const groupId = req.params.id;
@@ -35,6 +41,9 @@ router.post('/:id/add_members', authenticateToken, groupValidation, adminValidat
     }
 });
 
+/**
+ * This request returns the task of the groups
+ */
 router.get('/:id/tasks', authenticateToken, groupValidation, async (req, res) => {
     try {
         const groupId = req.params.id;

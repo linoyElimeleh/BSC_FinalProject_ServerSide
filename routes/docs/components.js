@@ -125,6 +125,49 @@ module.exports = {
                     },
                 }
             },
+            MembersTasks: {
+                type: 'object',
+                properties: {
+                    group_id: {
+                        type: "integer",
+                        example: "1234"
+                    },
+                    task_id: {
+                        type: "integer",
+                        example: "5678"
+                    },
+                    user_id: {
+                        type: "integer",
+                        example: "8910"
+                    },
+                }
+            },
+            UsersIds: {
+                type: 'object',
+                properties: {
+                    members: {
+                        type: "array",
+                        example: "[1,2,6,8]"
+                    }
+                }
+            },
+            UsersAfterSearch: {
+                type: 'object',
+                properties: {
+                    id: {
+                        type: "integer",
+                        example: "1234"
+                    },
+                    display_name: {
+                        type: "string",
+                        example: "Linoy"
+                    },
+                    email: {
+                        type: "string",
+                        example: "yosi12345567@yosi.com"
+                    },
+                }
+            },
         },
         securitySchemes: {
             bearerAuth: {

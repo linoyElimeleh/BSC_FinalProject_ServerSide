@@ -62,5 +62,4 @@ module.exports = {
         },
         security: [{bearerAuth: []}]
     },
-
 }

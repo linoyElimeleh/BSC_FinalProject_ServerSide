@@ -1,10 +1,14 @@
 const healthCheck = require('./healthCheck');
-const login = require('./login');
-const register = require('./register');
-const refreshToken = require('./refreshToken');
-const categories = require('./categories');
-const createGroup = require('./createGroup');
-const groupGetAndUpdateData = require('./groupGetAndUpdateData');
+const login = require('./auth/login');
+const register = require('./auth/register');
+const refreshToken = require('./auth/refreshToken');
+const categories = require('./categories/categories');
+const createGroup = require('./group/createGroup');
+const groupGetAndUpdateData = require('./group/groupGetAndUpdateData');
+const getGroupMembers = require('./group/getGroupMembers');
+const addGroupsMembers = require('./group/addGroupsMembers');
+const getGroupTasks = require('./group/getGroupTask');
+const users = require('./search/users');
 
 module.exports = {
     paths: {
@@ -48,6 +52,18 @@ module.exports = {
         },
         '/api/groups/{id}': {
             ...groupGetAndUpdateData
-        }
+        },
+        '/api/groups/{id}/members': {
+            ...getGroupMembers
+        },
+        '/api/groups/{id}/add_members': {
+            ...addGroupsMembers
+        },
+        '/api/groups/{id}/tasks': {
+            ...getGroupTasks
+        },
+        '/api/search/users': {
+            ...users
+        },
     }
 }
