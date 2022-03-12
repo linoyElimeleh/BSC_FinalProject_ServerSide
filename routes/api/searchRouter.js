@@ -5,7 +5,7 @@ const UserService = require('../../services/userService');
 /**
  * Get user by a query :search by display_name or email
  */
-router.get('/search', authenticateToken, async (req, res) => {
+router.get('/users', authenticateToken, async (req, res) => {
     const query = req.query.query;
     const searchResults = await UserService.searchUsers(query);
     res.json(searchResults);
