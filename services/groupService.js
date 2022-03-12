@@ -1,12 +1,18 @@
 const groupsDbHandler = require('../models/actions/groups');
 const tasksDbHandler = require('../models/actions/tasks');
 const membersDbHandler = require('../models/actions/members');
+const { generateUuid } = require('../utils/uidUtil');
 
 class GroupService {
     constructor() { }
 
     static getGroupById = async (groupId) => {
         const group = await groupsDbHandler.getGroupById(groupId);
+        return group.rows[0];
+    }
+
+    static getGroupByInviteCode = async (inviteCode) => {
+        const group = await groupsDbHandler.getGroupByInviteCode(inviteCode);
         return group.rows[0];
     }
 
@@ -25,6 +31,7 @@ class GroupService {
     }
 
     static createGroup = async (group, userId) => {
+        group.invite_code = generateUuid();
         const newGroup = await groupsDbHandler.createGroup(group, userId);
         return newGroup;
     }
