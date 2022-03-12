@@ -1,6 +1,5 @@
 const authenticateToken = require('../../middleware/authorization');
 const GroupService = require('../../services/groupService');
-const UserService = require('../../services/userService');
 const { groupValidation, adminValidation } = require('../../middleware/groupValidations');
 const router = require('express').Router();
 
