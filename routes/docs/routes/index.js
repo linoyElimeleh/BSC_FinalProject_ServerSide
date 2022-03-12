@@ -3,6 +3,7 @@ const login = require('./login');
 const register = require('./register');
 const refreshToken = require('./refreshToken');
 const categories = require('./categories');
+const groups = require('./groups');
 
 module.exports = {
     paths: {
@@ -35,13 +36,16 @@ module.exports = {
                         }
                     }
                 },
-                security: {
-                    ApiKeyAuth: []
-                },
+                // security: {
+                //     bearerAuth: []
+                // }
             }
         },
         '/api/categories/': {
             ...categories
+        },
+        '/api/groups/': {
+            ...groups
         }
     }
 }

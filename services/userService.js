@@ -22,7 +22,7 @@ class UserService {
 
     static registerUser = async (user) => {
         const newUser = await usersDbHandler.createUser(user);
-        return jwtTokens(newUser);
+        return (jwtTokens(newUser));
     }
 
     static updateUser = async (user) => {

@@ -23,6 +23,23 @@ module.exports = {
                     }
                 }
             },
+            CreateNewGroup: {
+                type: 'object',
+                properties: {
+                    group_name: {
+                        type: "string",
+                        example: "Todo Bom Group"
+                    },
+                    description: {
+                        type: "string",
+                        example: "The best Group In the World"
+                    },
+                    image: {
+                        type: "string",
+                        example: "https://some-image.com"
+                    }
+                }
+            },
             RegisterRequest: {
                 type: 'object',
                 properties: {
@@ -50,11 +67,16 @@ module.exports = {
             }
         },
         securitySchemes: {
-            ApiKeyAuth: {
-                type: "apiKey",
-                in: "header",
-                name: "Authorization"
+            bearerAuth: {
+                type: "http",
+                scheme: "bearer",
+                bearerFormat: "JWT",
             }
-        }
-    }
+        },
+    },
+    // security: [
+    //     {
+    //         bearerAuth: []
+    //     },
+    // ],
 }
