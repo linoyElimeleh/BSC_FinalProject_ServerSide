@@ -21,8 +21,8 @@ router.get('/me', authenticateToken, async (req, res) => {
  */
 router.get('/me/tasks', authenticateToken, async (req, res) => {
     try {
-        const groupId = req.query.groupId;
-        const userId = req.query.userId;
+        const groupId = req.body.groupId;
+        const userId = req.user.id;
         const tasks = await UserService.getCurrentUserTasks(userId, groupId);
         res.json(tasks);
     } catch (error) {
@@ -35,7 +35,7 @@ router.get('/me/tasks', authenticateToken, async (req, res) => {
  */
 router.get('/me/groups', authenticateToken, async (req, res) => {
     try {
-        const groups = await UserService.getCurrentUserGroups(req.query.userId);
+        const groups = await UserService.getCurrentUserGroups(req.user.id);
         res.json(groups);
     } catch (error) {
         res.status(500).json({ error: error.message });
