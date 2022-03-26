@@ -33,10 +33,10 @@ router.post('/login', async (req, res) => {
 /**
  * Return the refresh and access token
  */
-router.get('/refresh_token', (req, res) => {
+router.post('/refresh_token', (req, res) => {
     try {
-        const refreshToken = req.cookies.refresh_token;
-        console.log(req.cookies);
+        const refreshToken = req.body.refresh_token;
+        console.log(req.body);
         if (refreshToken === null) return res.sendStatus(401);
         jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (error, user) => {
             if (error) return res.status(403).json({ error: error.message });
