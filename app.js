@@ -12,8 +12,6 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 const app = express();
 
-const port = process.env.PORT || 8000;
-
 // const whitelist = ["http://localhost:8000", "http://localhost:3000", "http://localhost:63343", "http://localhost:19006"]
 const corsOptions = {
     origin: function (origin, callback) {
@@ -84,4 +82,4 @@ app.use(function (err, req, res, next) {
     });
 });
 
-app.listen(port, () => console.log(`API is listening on port ${port}`));
+module.exports = app;

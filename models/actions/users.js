@@ -89,6 +89,15 @@ const deleteUserRefreshToken = async (userId, refreshToken) => {
   });
 };
 
+const deleteUserByEmail = async (email) => {
+  await executeTransaction(async (client) => {
+    await client.query(
+      "DELETE FROM users WHERE email=$1",
+      [email]
+    );
+  })
+}
+
 
 module.exports = {
   getAllUsers,
@@ -101,5 +110,6 @@ module.exports = {
   addUserRefreshToken,
   getCurrentRefreshTokenIndex,
   updateUserRefreshToken,
-  deleteUserRefreshToken
+  deleteUserRefreshToken,
+  deleteUserByEmail
 };

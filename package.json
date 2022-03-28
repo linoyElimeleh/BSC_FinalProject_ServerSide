@@ -4,8 +4,8 @@
   "description": "API for todo bom project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "test": "jest --forceExit --runInBand",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -38,5 +38,9 @@
   },
   "engines": {
     "node": "16.x"
+  },
+  "devDependencies": {
+    "jest": "^27.5.1",
+    "supertest": "^6.2.2"
   }
 }
