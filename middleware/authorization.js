@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const { verifyToken } = require("../utils/jwtUtils");
 
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers["authorization"]; //Bearer TOKEN
@@ -6,15 +7,10 @@ const authenticateToken = (req, res, next) => {
   if (token == null) {
     return res.status(401).json({ error: "Null token" });
   }
-  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (error, user) => {
-    if (error) {
-      return res
-        .status(error instanceof jwt.TokenExpiredError ? 401 : 403)
-        .json({ error: error.message });
-    }
+  verifyToken(token, (_, user) => {
     req.user = user;
     next();
-  });
+  })
 };
 
 module.exports = authenticateToken;

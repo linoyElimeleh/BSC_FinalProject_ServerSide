@@ -8,8 +8,8 @@ const router = require('express').Router();
  */
 router.get('/me', authenticateToken, async (req, res) => {
     try {
-        const email = req.user.email;
-        const userDetails = await UserService.getCurrentUserDetails(email);
+        const userId = req.user.id;
+        const userDetails = await UserService.getCurrentUserDetails(userId);
         res.json(userDetails);
     } catch (error) {
         res.status(500).json({ error: error.message });

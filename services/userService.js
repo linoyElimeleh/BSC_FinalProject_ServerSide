@@ -5,8 +5,8 @@ const { jwtTokens } = require('../utils/jwtUtils');
 class UserService {
     constructor() { }
 
-    static getCurrentUserDetails = async (email) => {
-        const userDetails = await usersDbHandler.getUserByEmail(email);
+    static getCurrentUserDetails = async (userId) => {
+        const userDetails = await usersDbHandler.getUserById(userId);
         return userDetails.rows[0];
     }
 
@@ -22,7 +22,10 @@ class UserService {
 
     static registerUser = async (user) => {
         const newUser = await usersDbHandler.createUser(user);
-        return jwtTokens(newUser?.rows[0]);
+        const newUserData = newUser.rows[0];
+        const tokens = jwtTokens(newUserData);
+        await this.addUserRefreshToken(newUserData.id, tokens.refreshToken);
+        return tokens;
     }
 
     static updateUser = async (user) => {
@@ -32,6 +35,23 @@ class UserService {
     static searchUsers = async (query) => {
         const searchResults = await usersDbHandler.searchUsers(query);
         return searchResults.rows;
+    }
+
+    static addUserRefreshToken = async (userId, refreshToken) => {
+        await usersDbHandler.addUserRefreshToken(userId, refreshToken);
+    }
+
+    static getCurrentRefreshTokenIndex = async (userId, refreshToken) => {
+        const userData = await usersDbHandler.getCurrentRefreshTokenIndex(userId, refreshToken);
+        return userData.rows[0];
+    }
+
+    static refreshUserToken = async (userId, oldRefreshTokenIndex, newRefreshToken) => {
+        await usersDbHandler.updateUserRefreshToken(userId, oldRefreshTokenIndex, newRefreshToken);
+    }
+
+    static deleteUserRefreshToken = async (userId, refreshToken) => {
+        await usersDbHandler.deleteUserRefreshToken(userId, refreshToken);
     }
 }
 
