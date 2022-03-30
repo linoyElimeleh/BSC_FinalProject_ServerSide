@@ -46,13 +46,13 @@ module.exports = {
                         }
                     }
                 },
-                security: [{bearerAuth: []}]
+                security: [{ bearerAuth: [] }]
             }
         },
-        '/api/categories/': {
+        '/api/categories': {
             ...categories
         },
-        '/api/groups/': {
+        '/api/groups': {
             ...createGroup
         },
         '/api/groups/{id}': {
@@ -82,7 +82,7 @@ module.exports = {
         '/api/users/me/groups': {
             ...getUserGroups
         },
-        '/api/users/': {
+        '/api/users': {
             ...updateUserDetails
         },
     }

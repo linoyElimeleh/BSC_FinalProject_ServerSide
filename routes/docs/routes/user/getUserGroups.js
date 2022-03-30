@@ -3,15 +3,6 @@ module.exports = {
         tags: ['User'],
         description: 'Get user groups',
         operationId: 'user',
-        parameters: [
-            {
-                "name": "userId",
-                "in": "query",
-                "type": "integer",
-                "required": true,
-                "description": "user id"
-            }
-        ],
         responses: {
             '200': {
                 description: "Returns user groups successful",
@@ -24,6 +15,6 @@ module.exports = {
                 }
             }
         },
-        security: [{bearerAuth: []}]
+        security: [{ bearerAuth: [] }]
     },
 }

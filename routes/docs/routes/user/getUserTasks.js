@@ -10,13 +10,6 @@ module.exports = {
                 "type": "integer",
                 "required": true,
                 "description": "group id"
-            },
-            {
-                "name": "userId",
-                "in": "query",
-                "type": "integer",
-                "required": true,
-                "description": "user id"
             }
         ],
         responses: {
@@ -31,6 +24,6 @@ module.exports = {
                 }
             }
         },
-        security: [{bearerAuth: []}]
+        security: [{ bearerAuth: [] }]
     },
 }

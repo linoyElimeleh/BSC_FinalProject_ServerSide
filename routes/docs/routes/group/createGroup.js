@@ -3,14 +3,6 @@ module.exports = {
         tags: ['Groups'],
         description: 'Create a new group',
         operationId: 'groups',
-        parameters: [
-            {
-                "name": "userId",
-                "in": "query",
-                "type": "string",
-                "required": true
-            }
-        ],
         requestBody: {
             content: {
                 'application/json': {
@@ -38,6 +30,6 @@ module.exports = {
                 }
             }
         },
-        security: [{bearerAuth: []}]
+        security: [{ bearerAuth: [] }]
     },
 }

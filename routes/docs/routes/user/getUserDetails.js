@@ -3,15 +3,7 @@ module.exports = {
         tags: ['User'],
         description: 'Get user full details',
         operationId: 'user',
-        parameters: [
-            {
-                "name": "email",
-                "in": "query",
-                "type": "string",
-                "required": true,
-                "description": "user email"
-            }
-        ],
+        parameters: [],
         responses: {
             '200': {
                 description: "Returns user details successful",
@@ -24,6 +16,6 @@ module.exports = {
                 }
             }
         },
-        security: [{bearerAuth: []}]
+        security: [{ bearerAuth: [] }]
     },
 }

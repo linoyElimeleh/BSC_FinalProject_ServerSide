@@ -8,5 +8,9 @@ module.exports = {
             url: "http://todobom.herokuapp.com",
             description: "Heroku server"
         },
+        {
+            url: "https://todobom.herokuapp.com",
+            description: "Heroku SSL server"
+        },
     ]
 }

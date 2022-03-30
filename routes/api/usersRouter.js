@@ -21,7 +21,7 @@ router.get('/me', authenticateToken, async (req, res) => {
  */
 router.get('/me/tasks', authenticateToken, async (req, res) => {
     try {
-        const groupId = req.body.groupId;
+        const groupId = req.query.groupId;
         const userId = req.user.id;
         const tasks = await UserService.getCurrentUserTasks(userId, groupId);
         res.json(tasks);
