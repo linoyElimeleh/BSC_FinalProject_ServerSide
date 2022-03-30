@@ -1,11 +1,15 @@
 module.exports = {
-    get: {
+    post: {
         tags: ['Authentication'],
-        description: 'Get the refresh token',
+        description: 'Get a new refresh token',
         operationId: 'refresh_token',
         requestBody: {
             content: {
-                'application/json': {}
+                'application/json': {
+                    schema: {
+                        $ref: '#components/schemas/RefreshToken'
+                    }
+                }
             }
         },
         responses: {
@@ -37,7 +41,11 @@ module.exports = {
         operationId: 'refresh_token',
         requestBody: {
             content: {
-                'application/json': {}
+                'application/json': {
+                    schema: {
+                        $ref: '#components/schemas/RefreshToken'
+                    }
+                }
             }
         },
         responses: {

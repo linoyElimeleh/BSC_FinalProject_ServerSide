@@ -394,6 +394,15 @@ module.exports = {
                     },
                 }
             },
+            RefreshToken: {
+                type: 'object',
+                properties: {
+                    refresh_token: {
+                        type: "string",
+                        example: "some token..."
+                    }
+                }
+            },
 
         },
         securitySchemes: {
