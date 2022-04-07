@@ -40,7 +40,7 @@ router.post('/refresh_token', (req, res) => {
     try {
         const refreshToken = req.body.refresh_token;
         if (refreshToken === null) return res.sendStatus(401);
-        verifyToken(refreshToken, async (_, user) => {
+        verifyToken(refreshToken, res, async (_, user) => {
             const userDetails = await UserService.getCurrentRefreshTokenIndex(user.id, refreshToken);
             if (!userDetails) return res.status(401).json({ error: "Token not found. Please relog." })
             let tokens = jwtTokens(user);
@@ -67,7 +67,7 @@ router.delete('/refresh_token', (req, res) => {
     try {
         const refreshToken = req.body.refresh_token;
         if (refreshToken === null) return res.status(404).json({ error: "Please send a refresh token." });
-        verifyToken(refreshToken, async (_, user) => {
+        verifyToken(refreshToken, res, async (_, user) => {
             await UserService.deleteUserRefreshToken(user.id, refreshToken);
             res.clearCookie('refresh_token');
             return res.status(200).json({ message: 'Refresh token deleted.' });

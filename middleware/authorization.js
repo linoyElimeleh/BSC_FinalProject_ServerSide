@@ -7,7 +7,7 @@ const authenticateToken = (req, res, next) => {
   if (token == null) {
     return res.status(401).json({ error: "Null token" });
   }
-  verifyToken(token, (_, user) => {
+  verifyToken(token, res, (_, user) => {
     req.user = user;
     next();
   })

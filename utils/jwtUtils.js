@@ -8,7 +8,7 @@ const jwtTokens = ({ id, email }) => {
   return ({ accessToken, refreshToken });
 }
 
-const verifyToken = (token, callback) => {
+const verifyToken = (token, res, callback) => {
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (error, user) => {
     if (error) {
       return res

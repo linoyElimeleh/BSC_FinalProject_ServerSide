@@ -6,7 +6,6 @@ const UserNotAdmin = require("../exceptions/UserNotAdmin");
 
 const groupValidation = async (req, res, next) => {
     try {
-       // const groupId = req.query.groupId;
         const groupId = req.params.id;
         const group = await GroupService.getGroupById(groupId);
         if (!group) {
