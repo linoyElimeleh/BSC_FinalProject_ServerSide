@@ -1,15 +1,15 @@
 module.exports = {
     get: {
-        tags: ['User'],
-        description: 'Get user groups',
-        operationId: 'getUserGroups',
+        tags: ['Common'],
+        description: 'Get all repeat types',
+        operationId: 'repeatTypes',
         responses: {
             '200': {
-                description: "Returns user groups successful",
+                description: "Success",
                 content: {
                     'application/json': {
                         schema: {
-                            $ref: '#components/schemas/GetUserGroups'
+                            $ref: '#components/schemas/RepeatTypes'
                         }
                     }
                 }

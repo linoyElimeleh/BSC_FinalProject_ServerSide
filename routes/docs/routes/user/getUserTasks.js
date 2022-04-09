@@ -2,7 +2,7 @@ module.exports = {
     get: {
         tags: ['User'],
         description: 'Get user tasks',
-        operationId: 'user',
+        operationId: 'getUserTasks',
         parameters: [
             {
                 "name": "groupId",

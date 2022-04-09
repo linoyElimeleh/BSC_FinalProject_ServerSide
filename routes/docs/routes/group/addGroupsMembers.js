@@ -2,7 +2,7 @@ module.exports = {
     post: {
         tags: ['Groups'],
         description: 'Add new team members to an exist group',
-        operationId: 'groups',
+        operationId: 'addGroupMembers',
         parameters: [
             {
                 "name": "id",
@@ -26,6 +26,6 @@ module.exports = {
                 description: "Teams members were added successful",
             }
         },
-        security: [{bearerAuth: []}]
+        security: [{ bearerAuth: [] }]
     },
 }

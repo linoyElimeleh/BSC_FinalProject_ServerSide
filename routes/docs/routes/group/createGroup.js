@@ -2,7 +2,7 @@ module.exports = {
     post: {
         tags: ['Groups'],
         description: 'Create a new group',
-        operationId: 'groups',
+        operationId: 'createGroup',
         requestBody: {
             content: {
                 'application/json': {

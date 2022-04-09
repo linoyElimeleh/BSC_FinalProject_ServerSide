@@ -2,7 +2,7 @@ module.exports = {
     post: {
         tags: ['Authentication'],
         description: 'Get a new refresh token',
-        operationId: 'refresh_token',
+        operationId: 'postRefresh_token',
         requestBody: {
             content: {
                 'application/json': {
@@ -38,7 +38,7 @@ module.exports = {
     delete: {
         tags: ['Authentication'],
         description: 'Delete the refresh token',
-        operationId: 'refresh_token',
+        operationId: 'deleteRefresh_token',
         requestBody: {
             content: {
                 'application/json': {

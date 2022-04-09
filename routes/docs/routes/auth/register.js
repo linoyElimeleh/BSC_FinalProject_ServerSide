@@ -2,7 +2,7 @@ module.exports = {
     post: {
         tags: ['User'],
         description: 'Register to the app',
-        operationId: 'user',
+        operationId: 'registerUser',
         requestBody: {
             content: {
                 'application/json': {

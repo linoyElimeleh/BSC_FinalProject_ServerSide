@@ -2,7 +2,7 @@ module.exports = {
     put: {
         tags: ['Tasks'],
         description: 'Update an exist task',
-        operationId: 'tasks',
+        operationId: 'assignTask',
         parameters: [
             {
                 "name": "id",

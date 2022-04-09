@@ -16,6 +16,7 @@ const getUserDetails = require('./user/getUserDetails');
 const getUserTasks = require('./user/getUserTasks');
 const getUserGroups = require('./user/getUserGroups');
 const updateUserDetails = require('./user/updateUserDetails');
+const repeatTypes = require('./common/repeatTypes');
 
 module.exports = {
     paths: {
@@ -30,26 +31,6 @@ module.exports = {
         },
         '/api/users/register': {
             ...register
-        },
-        '/api/test-auth': {
-            get: {
-                tags: ['Test Route'],
-                description: 'test that auth works',
-                operationId: 'beep',
-                responses: {
-                    '200': {
-                        description: "Server is alive",
-                        content: {
-                            'application/json': {
-                                schema: {
-                                    $ref: '#/components/schemas/beep'
-                                }
-                            }
-                        }
-                    }
-                },
-                security: [{ bearerAuth: [] }]
-            }
         },
         '/api/categories': {
             ...categories
@@ -93,5 +74,8 @@ module.exports = {
         '/api/users': {
             ...updateUserDetails
         },
+        '/api/common/repeat_types': {
+            ...repeatTypes
+        }
     }
 }

@@ -2,7 +2,7 @@ module.exports = {
     get: {
         tags: ['Groups'],
         description: 'Get data and team members about the group',
-        operationId: 'groups',
+        operationId: 'getGroupById',
         parameters: [
             {
                 "name": "id",
@@ -29,7 +29,7 @@ module.exports = {
     put: {
         tags: ['Groups'],
         description: 'Update exist group',
-        operationId: 'groups',
+        operationId: 'updateGroupById',
         parameters: [
             {
                 "name": "id",

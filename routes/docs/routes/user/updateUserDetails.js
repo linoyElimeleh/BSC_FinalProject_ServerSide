@@ -2,7 +2,7 @@ module.exports = {
     put: {
         tags: ['User'],
         description: 'Update exist user',
-        operationId: 'user',
+        operationId: 'updateUserDetails',
         requestBody: {
             content: {
                 'application/json': {
@@ -17,6 +17,6 @@ module.exports = {
                 description: "User Updated successfully",
             }
         },
-        security: [{bearerAuth: []}]
+        security: [{ bearerAuth: [] }]
     },
 }

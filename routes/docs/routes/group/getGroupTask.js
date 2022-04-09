@@ -2,7 +2,7 @@ module.exports = {
     get: {
         tags: ['Groups'],
         description: 'Get all groups tasks',
-        operationId: 'groups',
+        operationId: 'getGroupTasks',
         parameters: [
             {
                 "name": "id",
@@ -24,6 +24,6 @@ module.exports = {
                 }
             }
         },
-        security: [{bearerAuth: []}]
+        security: [{ bearerAuth: [] }]
     },
 }

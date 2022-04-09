@@ -2,7 +2,7 @@ module.exports = {
     get: {
         tags: ['User'],
         description: 'Get user full details',
-        operationId: 'user',
+        operationId: 'getUserDetails',
         parameters: [],
         responses: {
             '200': {

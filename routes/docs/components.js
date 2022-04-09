@@ -438,6 +438,23 @@ module.exports = {
                     },
                 }
             },
+            RepeatTypes: {
+                type: 'array',
+                items: {
+                    type: 'object',
+                    properties: {
+                        id: {
+                            type: "integer",
+                            example: 1
+                        },
+                        type: {
+                            type: "string",
+                            example: "Daily"
+                        },
+                    }
+
+                }
+            },
             RefreshToken: {
                 type: 'object',
                 properties: {

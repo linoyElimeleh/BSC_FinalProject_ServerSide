@@ -2,7 +2,7 @@ module.exports = {
     post: {
         tags: ['Tasks'],
         description: 'Create a new task',
-        operationId: 'tasks',
+        operationId: 'createTaks',
         parameters: [
             {
                 "name": "id",
@@ -38,7 +38,7 @@ module.exports = {
     put: {
         tags: ['Tasks'],
         description: 'Update an existing task',
-        operationId: 'tasks',
+        operationId: 'updateTask',
         parameters: [
             {
                 "name": "id",
@@ -67,7 +67,7 @@ module.exports = {
     delete: {
         tags: ['Tasks'],
         description: 'Delete a task',
-        operationId: 'tasks',
+        operationId: 'deleteTaks',
         parameters: [
             {
                 "name": "id",

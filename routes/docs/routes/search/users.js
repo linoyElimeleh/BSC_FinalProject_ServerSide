@@ -2,7 +2,7 @@ module.exports = {
     get: {
         tags: ['Search'],
         description: 'Get search request',
-        operationId: 'search',
+        operationId: 'searchUsers',
         parameters: [
             {
                 "name": "query",
@@ -24,6 +24,6 @@ module.exports = {
                 }
             }
         },
-        security: [{bearerAuth: []}]
+        security: [{ bearerAuth: [] }]
     },
 }
