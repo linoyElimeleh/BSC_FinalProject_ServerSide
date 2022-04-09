@@ -9,7 +9,9 @@ const getGroupMembers = require('./group/getGroupMembers');
 const addGroupsMembers = require('./group/addGroupsMembers');
 const getGroupTasks = require('./group/getGroupTask');
 const searchUsers = require('./search/users');
-const tasks = require('./tasks/task');
+const tasks = require('./tasks/tasks');
+const setTaskStatus = require('./tasks/setTaskStatus');
+const assignTask = require('./tasks/assignTask');
 const getUserDetails = require('./user/getUserDetails');
 const getUserTasks = require('./user/getUserTasks');
 const getUserGroups = require('./user/getUserGroups');
@@ -67,11 +69,17 @@ module.exports = {
         '/api/groups/{id}/tasks': {
             ...getGroupTasks
         },
+        '/api/groups/{id}/task': {
+            ...tasks
+        },
+        '/api/groups/{id}/task/set_status': {
+            ...setTaskStatus
+        },
+        '/api/groups/{id}/assign': {
+            ...assignTask
+        },
         '/api/search/users': {
             ...searchUsers
-        },
-        '/api/tasks': {
-            ...tasks
         },
         '/api/users/me': {
             ...getUserDetails

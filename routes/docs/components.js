@@ -70,7 +70,7 @@ module.exports = {
                 properties: {
                     id: {
                         type: "integer",
-                        example: "1234"
+                        example: 1234
                     },
                     name: {
                         type: "string",
@@ -97,7 +97,7 @@ module.exports = {
                 properties: {
                     id: {
                         type: "integer",
-                        example: "1234"
+                        example: 1234
                     },
                     display_name: {
                         type: "string",
@@ -117,7 +117,7 @@ module.exports = {
                     },
                     score: {
                         type: "integer",
-                        example: "500"
+                        example: 500
                     },
                     is_admin: {
                         type: "boolean",
@@ -130,15 +130,15 @@ module.exports = {
                 properties: {
                     group_id: {
                         type: "integer",
-                        example: "1234"
+                        example: 1234
                     },
                     task_id: {
                         type: "integer",
-                        example: "5678"
+                        example: 5678
                     },
                     user_id: {
                         type: "integer",
-                        example: "8910"
+                        example: 8910
                     },
                 }
             },
@@ -156,7 +156,7 @@ module.exports = {
                 properties: {
                     id: {
                         type: "integer",
-                        example: "1234"
+                        example: 1234
                     },
                     display_name: {
                         type: "string",
@@ -171,46 +171,55 @@ module.exports = {
             CreateNewTask: {
                 type: 'object',
                 properties: {
-                    title: {
-                        type: "string",
-                        example: "Todo Bom Title"
+                    task: {
+                        type: 'object',
+                        properties: {
+                            title: {
+                                type: "string",
+                                example: "Todo Bom Title"
+                            },
+                            description: {
+                                type: "string",
+                                example: "The best Task In the World"
+                            },
+                            category_id: {
+                                type: "integer",
+                                example: 1234
+                            },
+                            due_date: {
+                                type: "timestamp",
+                                example: 1649505357023
+                            },
+                            done: {
+                                type: "boolean",
+                                example: true
+                            },
+                            repeat: {
+                                type: "integer",
+                                example: 2
+                            },
+                            end_repeat: {
+                                type: "timestamp",
+                                example: 1649505357023
+                            },
+                            urgent: {
+                                type: "boolean",
+                                example: false
+                            },
+                            snooze_interval: {
+                                type: "integer",
+                                example: 4
+                            },
+                            score: {
+                                type: "integer",
+                                example: 500
+                            }
+                        }
                     },
-                    description: {
-                        type: "string",
-                        example: "The best Task In the World"
-                    },
-                    category_id: {
+                    userId: {
                         type: "integer",
-                        example: "1234"
-                    },
-                    due_date: {
-                        type: "date",
-                        example: "1997-01-01"
-                    },
-                    done: {
-                        type: "boolean",
-                        example: true
-                    },
-                    repeat: {
-                        type: "integer",
-                        example: "2"
-                    },
-                    end_repeat: {
-                        type: "date",
-                        example: "1997-01-01"
-                    },
-                    urgent: {
-                        type: "boolean",
-                        example: false
-                    },
-                    snooze_interval: {
-                        type: "integer",
-                        example: "4"
-                    },
-                    score: {
-                        type: "integer",
-                        example: "500"
-                    },
+                        example: 500
+                    }
                 }
             },
             UpdateExistTask: {
@@ -218,7 +227,7 @@ module.exports = {
                 properties: {
                     id: {
                         type: "integer",
-                        example: "1111"
+                        example: 500
                     },
                     title: {
                         type: "string",
@@ -230,11 +239,11 @@ module.exports = {
                     },
                     category_id: {
                         type: "integer",
-                        example: "1234"
+                        example: 1234
                     },
                     due_date: {
-                        type: "date",
-                        example: "1997-01-01"
+                        type: "timestamp",
+                        example: 1649505357023
                     },
                     done: {
                         type: "boolean",
@@ -242,11 +251,11 @@ module.exports = {
                     },
                     repeat: {
                         type: "integer",
-                        example: "2"
+                        example: 2
                     },
                     end_repeat: {
-                        type: "date",
-                        example: "1997-01-01"
+                        type: "timestamp",
+                        example: 1649505357023
                     },
                     urgent: {
                         type: "boolean",
@@ -254,12 +263,47 @@ module.exports = {
                     },
                     snooze_interval: {
                         type: "integer",
-                        example: "4"
+                        example: 4
                     },
                     score: {
                         type: "integer",
-                        example: "500"
+                        example: 500
                     },
+                }
+            },
+            DeleteTask: {
+                type: 'object',
+                properties: {
+                    taskId: {
+                        type: "integer",
+                        example: 1234
+                    }
+                }
+            },
+            SetTaskStatus: {
+                type: 'object',
+                properties: {
+                    taskId: {
+                        type: "integer",
+                        example: 1234
+                    },
+                    status: {
+                        type: 'boolean',
+                        example: true
+                    }
+                }
+            },
+            AssignTask: {
+                type: 'object',
+                properties: {
+                    taskId: {
+                        type: "integer",
+                        example: 1234
+                    },
+                    userId: {
+                        type: 'integer',
+                        example: 1234
+                    }
                 }
             },
             UserFullDetails: {
@@ -267,7 +311,7 @@ module.exports = {
                 properties: {
                     id: {
                         type: "integer",
-                        example: "1234"
+                        example: 1234
                     },
                     display_name: {
                         type: "string",
@@ -296,7 +340,7 @@ module.exports = {
                 properties: {
                     id: {
                         type: "integer",
-                        example: "1111"
+                        example: 1111
                     },
                     title: {
                         type: "string",
@@ -308,7 +352,7 @@ module.exports = {
                     },
                     category_id: {
                         type: "integer",
-                        example: "1234"
+                        example: 1234
                     },
                     due_date: {
                         type: "date",
@@ -320,7 +364,7 @@ module.exports = {
                     },
                     repeat: {
                         type: "integer",
-                        example: "2"
+                        example: 2
                     },
                     end_repeat: {
                         type: "date",
@@ -332,23 +376,23 @@ module.exports = {
                     },
                     snooze_interval: {
                         type: "integer",
-                        example: "4"
+                        example: 4
                     },
                     score: {
                         type: "integer",
-                        example: "500"
+                        example: 500
                     },
                     group_id: {
                         type: "integer",
-                        example: "1"
+                        example: 1
                     },
                     task_id: {
                         type: "integer",
-                        example: "2"
+                        example: 2
                     },
                     user_id: {
                         type: "integer",
-                        example: "3"
+                        example: 3
                     },
                 }
             },
@@ -357,7 +401,7 @@ module.exports = {
                 properties: {
                     id: {
                         type: "integer",
-                        example: "1111"
+                        example: 1111
                     },
                     name: {
                         type: "string",
@@ -382,7 +426,7 @@ module.exports = {
                 properties: {
                     id: {
                         type: "integer",
-                        example: "1111"
+                        example: 1111
                     },
                     display_name: {
                         type: "string",
