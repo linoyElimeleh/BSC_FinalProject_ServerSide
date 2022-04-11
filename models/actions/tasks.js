@@ -57,7 +57,7 @@ const setTaskStatus = async (taskId, status) => {
 const getAllGroupTasks = async (groupId) => {
     return await pool.query(
         `SELECT * FROM tasks
-            LEFT OUTER JOIN (select * from group_user_tasks where group_id=$1) AS group_tasks 
+            JOIN (select * from group_user_tasks where group_id=$1) AS group_tasks 
             ON group_tasks.task_id = tasks.id`,
         [groupId]
     );
@@ -66,7 +66,7 @@ const getAllGroupTasks = async (groupId) => {
 const getAllMemberTasksByGroup = async (groupId, memberId) => {
     return await pool.query(
         `SELECT * FROM tasks
-            LEFT OUTER JOIN (select * from group_user_tasks where group_id=$1 and user_id=$2) AS user_tasks 
+            JOIN (select * from group_user_tasks where group_id=$1 and user_id=$2) AS user_tasks 
             ON user_tasks.task_id = tasks.id`,
         [groupId, memberId]
     );
