@@ -56,7 +56,7 @@ module.exports = {
         '/api/groups/{id}/task/set_status': {
             ...setTaskStatus
         },
-        '/api/groups/{id}/assign': {
+        '/api/groups/{id}/task/assign': {
             ...assignTask
         },
         '/api/search/users': {
