@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="36e4e9c6-24b3-4446-b869-7b68af1402ed" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/models/actions/scores.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/api/scoresRouter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/scoresService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres/postgres-data/pg_stat_tmp/global.stat" beforeDir="false" afterPath="$PROJECT_DIR$/postgres/postgres-data/pg_stat_tmp/global.stat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres/postgres-data/postmaster.pid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/index.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="25ensPgRmx8tOY4zLiMBDtUHs0r" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/services" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.CommitDialog" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/services" />
+      <recent name="$PROJECT_DIR$/models/actions" />
+      <recent name="$PROJECT_DIR$/routes/api" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/routes/docs/routes/auth" />
+      <recent name="$PROJECT_DIR$/routes/docs/routes/categories" />
+      <recent name="$PROJECT_DIR$/routes/docs/routes/group" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Node.js.server.js">
+    <configuration name="app.js" type="NodeJSConfigurationType" temporary="true" path-to-node="$USER_HOME$/.nvm/versions/node/v16.13.0/bin/node" nameIsGenerated="true" path-to-js-file="app.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration name="server.js" type="NodeJSConfigurationType" temporary="true" path-to-node="$USER_HOME$/.nvm/versions/node/v16.13.0/bin/node" nameIsGenerated="true" path-to-js-file="server.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Node.js.app.js" />
+      <item itemvalue="Node.js.server.js" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.server.js" />
+        <item itemvalue="Node.js.app.js" />
+        <item itemvalue="Node.js.app.js" />
+        <item itemvalue="Node.js.app.js" />
+        <item itemvalue="Node.js.app.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="36e4e9c6-24b3-4446-b869-7b68af1402ed" name="Changes" comment="" />
+      <created>1645896627549</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1645896627549</updated>
+      <workItem from="1645896631587" duration="3530000" />
+      <workItem from="1645942430603" duration="2036000" />
+      <workItem from="1646415949390" duration="4569000" />
+      <workItem from="1646471857419" duration="8403000" />
+      <workItem from="1646739439559" duration="49582000" />
+      <workItem from="1647849344398" duration="9701000" />
+      <workItem from="1648557858721" duration="5853000" />
+      <workItem from="1649532384748" duration="684000" />
+      <workItem from="1649688135375" duration="3832000" />
+      <workItem from="1650204742795" duration="579000" />
+      <workItem from="1650793812270" duration="12886000" />
+    </task>
+    <task id="LOCAL-00001" summary="fixing cors bug">
+      <created>1646496795897</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1646496795897</updated>
+    </task>
+    <task id="LOCAL-00002" summary="refresh token apis">
+      <created>1646558559692</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1646558559692</updated>
+    </task>
+    <task id="LOCAL-00003" summary="categories apis">
+      <created>1646559237838</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1646559237839</updated>
+    </task>
+    <task id="LOCAL-00004" summary="auth request">
+      <created>1647068382728</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1647068382728</updated>
+    </task>
+    <task id="LOCAL-00005" summary="auth request">
+      <created>1647072482355</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1647072482358</updated>
+    </task>
+    <task id="LOCAL-00006" summary="groups request">
+      <created>1647086160222</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1647086160223</updated>
+    </task>
+    <task id="LOCAL-00007" summary="search request">
+      <created>1647111488759</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1647111488760</updated>
+    </task>
+    <task id="LOCAL-00008" summary="users request">
+      <created>1647119946934</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1647119946935</updated>
+    </task>
+    <task id="LOCAL-00009" summary="users request">
+      <created>1647120405359</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1647120405360</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="fixing cors bug" />
+    <MESSAGE value="refresh token apis" />
+    <MESSAGE value="categories apis" />
+    <MESSAGE value="auth request" />
+    <MESSAGE value="groups request" />
+    <MESSAGE value="search request" />
+    <MESSAGE value="users request" />
+    <option name="LAST_COMMIT_MESSAGE" value="users request" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/services/taskService.js</url>
+          <line>6</line>
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/services/taskService.js</url>
+          <line>5</line>
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/services/taskService.js</url>
+          <line>17</line>
+          <option name="timeStamp" value="63" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/models/actions/tasks.js</url>
+          <line>25</line>
+          <option name="timeStamp" value="65" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/routes/api/authRouter.js</url>
+          <line>40</line>
+          <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/routes/api/authRouter.js</url>
+          <line>41</line>
+          <option name="timeStamp" value="67" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/routes/api/authRouter.js</url>
+          <line>43</line>
+          <option name="timeStamp" value="68" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/routes/api/authRouter.js</url>
+          <line>44</line>
+          <option name="timeStamp" value="69" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
