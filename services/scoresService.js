@@ -36,7 +36,7 @@ class ScoresService {
 
     static getSpecificScoresByUserIdAndGroupId = async (userId, groupId) => {
         const respond = await scoresDbHandler.getScoresByUserIdAndGroupId(userId, groupId);
-        return respond.rows[0].scores;
+        return respond.rows[0].score;
     }
 
     static checkIfUserAlreadyCreatedInGroup = async (userId, groupId) => {
@@ -46,7 +46,7 @@ class ScoresService {
     static createScoreRow = async (score, userId, groupId) => {
         const isCreated = await scoresDbHandler.isUserAlreadyCreatedInGroup(userId, groupId);
         if (isCreated) {
-            return updateGroup(groupId, userId, score);
+            return scoresDbHandler.updateScoreByUserId(groupId, userId, score);
         }
         return await scoresDbHandler.createScoresByUserId(score, userId, groupId);
     }

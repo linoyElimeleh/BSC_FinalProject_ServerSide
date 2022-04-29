@@ -18,6 +18,9 @@ const getUserGroups = require('./user/getUserGroups');
 const updateUserDetails = require('./user/updateUserDetails');
 const repeatTypes = require('./common/repeatTypes');
 const addNewScore = require('./scores/addNewScore');
+const getScoresByGroupAndUser = require('./scores/getScoresByGroupAndUser');
+const getScoresByUserId = require('./scores/getAllGroupsScoresByUser');
+
 module.exports = {
     paths: {
         '/api/beep': {
@@ -79,6 +82,12 @@ module.exports = {
         },
         '/api/scores/{group_id}/{user_id}/addNewScore': {
             ...addNewScore
+        },
+        '/api/scores/{group_id}/{user_id}/scores': {
+            ...getScoresByGroupAndUser
+        },
+        '/api/scores/{user_id}/groupsScores': {
+            ...getScoresByUserId
         }
     }
 }

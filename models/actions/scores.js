@@ -48,5 +48,6 @@ module.exports = {
     getScoresByUserId,
     updateScoreByUserId,
     createScoresByUserId,
-    isUserAlreadyCreatedInGroup
+    isUserAlreadyCreatedInGroup,
+    getScoresByUserIdAndGroupId
 };

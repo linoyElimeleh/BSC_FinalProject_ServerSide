@@ -467,12 +467,30 @@ module.exports = {
             addNewScore: {
                 type: 'object',
                 properties: {
-                    scores: {
+                    score: {
                         type: "string",
                         example: "10"
                     }
                 }
             },
+            usersGroupScores: {
+                type: 'object',
+                properties: {
+                    group_id: {
+                        type: "string",
+                        example: "123"
+                    },
+                    user_id: {
+                        type: "string",
+                        example: "456"
+                    },
+                    score: {
+                        type: "string",
+                        example: "100"
+                    }
+                }
+            },
+
 
         },
         securitySchemes: {

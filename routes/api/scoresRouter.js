@@ -43,7 +43,7 @@ router.get('/:user_id/userTotalScores', authenticateToken, groupValidation, asyn
 /**
  * Return the user scores in all his groups by user id
  */
-router.get('/:user_id/groupsScores', authenticateToken, groupValidation, async (req, res) => {
+router.get('/:user_id/groupsScores', authenticateToken, async (req, res) => {
     try {
         const totalScores = await ScoreService.getAllScoresByUserId(req.params.user_id);
         res.json({...req.user_id, totalScores});
@@ -94,7 +94,7 @@ router.post('/:id/:user_id/addNewScore', authenticateToken, groupValidation, asy
 /**
  * This request update new score row by group id and members
  */
-router.put('/:id/:user_id/updateScore', authenticateToken, groupValidation, async (req, res) => {
+router.put('/:id/:user_id/addNewScore', authenticateToken, groupValidation, async (req, res) => {
     try {
         const groupId = req.params.id;
         const userId = req.params.user_id;
