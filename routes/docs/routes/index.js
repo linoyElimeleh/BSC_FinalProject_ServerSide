@@ -17,7 +17,7 @@ const getUserTasks = require('./user/getUserTasks');
 const getUserGroups = require('./user/getUserGroups');
 const updateUserDetails = require('./user/updateUserDetails');
 const repeatTypes = require('./common/repeatTypes');
-
+const addNewScore = require('./scores/addNewScore');
 module.exports = {
     paths: {
         '/api/beep': {
@@ -76,6 +76,9 @@ module.exports = {
         },
         '/api/common/repeat_types': {
             ...repeatTypes
+        },
+        '/api/scores/{group_id}/{user_id}/addNewScore': {
+            ...addNewScore
         }
     }
 }

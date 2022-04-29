@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36e4e9c6-24b3-4446-b869-7b68af1402ed" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/models/actions/scores.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/api/scoresRouter.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/scoresService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres/postgres-data/pg_stat_tmp/global.stat" beforeDir="false" afterPath="$PROJECT_DIR$/postgres/postgres-data/pg_stat_tmp/global.stat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres/postgres-data/postmaster.pid" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/docs/routes/scores/addNewScore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api/scoresRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/scoresRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/docs/components.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/docs/components.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/docs/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/docs/routes/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,13 +47,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/services" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/routes/docs/routes/scores" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.CommitDialog" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/routes/docs/routes/scores" />
       <recent name="$PROJECT_DIR$/services" />
       <recent name="$PROJECT_DIR$/models/actions" />
       <recent name="$PROJECT_DIR$/routes/api" />
@@ -103,7 +104,7 @@
       <workItem from="1649532384748" duration="684000" />
       <workItem from="1649688135375" duration="3832000" />
       <workItem from="1650204742795" duration="579000" />
-      <workItem from="1650793812270" duration="12886000" />
+      <workItem from="1650793812270" duration="17484000" />
     </task>
     <task id="LOCAL-00001" summary="fixing cors bug">
       <created>1646496795897</created>
@@ -168,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647120405360</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="scores router">
+      <created>1651222717387</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1651222717389</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,7 +202,8 @@
     <MESSAGE value="groups request" />
     <MESSAGE value="search request" />
     <MESSAGE value="users request" />
-    <option name="LAST_COMMIT_MESSAGE" value="users request" />
+    <MESSAGE value="scores router" />
+    <option name="LAST_COMMIT_MESSAGE" value="scores router" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -238,6 +247,24 @@
           <url>file://$PROJECT_DIR$/routes/api/authRouter.js</url>
           <line>44</line>
           <option name="timeStamp" value="69" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/routes/api/scoresRouter.js</url>
+          <line>83</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/routes/api/scoresRouter.js</url>
+          <line>86</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/services/scoresService.js</url>
+          <line>37</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="77" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

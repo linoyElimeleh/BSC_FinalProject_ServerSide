@@ -1,18 +1,16 @@
 const authenticateToken = require('../../middleware/authorization');
 const ScoreService = require('../../services/scoresService');
 const {groupValidation, adminValidation, isUserEligibleToJoin} = require('../../middleware/groupValidations');
-const TaskService = require('../../services/taskService');
-const {taskOwnerValidation, taskReporterValidation} = require('../../middleware/taskValidation');
 const router = require('express').Router();
 
 /**
  * Return the group data by group id
  * Group data as scores and users
  */
-router.get('/:group_id/usersScores', authenticateToken, groupValidation, async (req, res) => {
+router.get('/:id/usersScores', authenticateToken, groupValidation, async (req, res) => {
     try {
-        const members = await ScoreService.getAllUserScoresByGroupId(req.params.group_id);
-        res.json({...req.group_id, members});
+        const members = await ScoreService.getAllUserScoresByGroupId(req.params.id);
+        res.json({...req.id, members});
     } catch (error) {
         res.status(500).json({error: error.message});
     }
@@ -21,10 +19,10 @@ router.get('/:group_id/usersScores', authenticateToken, groupValidation, async (
 /**
  * Return the total scores by group id
  */
-router.get('/:group_id/groupTotalScores', authenticateToken, groupValidation, async (req, res) => {
+router.get('/:id/groupTotalScores', authenticateToken, groupValidation, async (req, res) => {
     try {
-        const totalScores = await ScoreService.getTotalScoresByGroupId(req.params.group_id);
-        res.json({...req.group_id, totalScores});
+        const totalScores = await ScoreService.getTotalScoresByGroupId(req.params.id);
+        res.json({...req.id, totalScores});
     } catch (error) {
         res.status(500).json({error: error.message});
     }
@@ -57,10 +55,10 @@ router.get('/:user_id/groupsScores', authenticateToken, groupValidation, async (
 /**
  * Return the user scores in current group by user id and group id
  */
-router.get('/:group_id/:user_id/scores', authenticateToken, groupValidation, async (req, res) => {
+router.get('/:id/:user_id/scores', authenticateToken, groupValidation, async (req, res) => {
     try {
-        const totalScores = await ScoreService.getSpecificScoresByUserIdAndGroupId(req.params.user_id, req.params.group_id);
-        res.json({...req.user_id, ...req.group_id, totalScores});
+        const totalScores = await ScoreService.getSpecificScoresByUserIdAndGroupId(req.params.user_id, req.params.id);
+        res.json({...req.user_id, ...req.id, totalScores});
     } catch (error) {
         res.status(500).json({error: error.message});
     }
@@ -69,10 +67,10 @@ router.get('/:group_id/:user_id/scores', authenticateToken, groupValidation, asy
 /**
  * Return true if the user already created in group with scores or false if doesnt
  */
-router.get('/:group_id/:user_id/isExist', authenticateToken, groupValidation, async (req, res) => {
+router.get('/:id/:user_id/isExist', authenticateToken, groupValidation, async (req, res) => {
     try {
-        const isExist = await ScoreService.checkIfUserAlreadyCreatedInGroup(req.params.user_id, req.params.group_id);
-        res.json({...req.user_id, ...req.group_id, isExist});
+        const isExist = await ScoreService.checkIfUserAlreadyCreatedInGroup(req.params.user_id, req.params.id);
+        res.json({...req.user_id, ...req.id, isExist});
     } catch (error) {
         res.status(500).json({error: error.message});
     }
@@ -81,11 +79,11 @@ router.get('/:group_id/:user_id/isExist', authenticateToken, groupValidation, as
 /**
  * This request adds new score row by group id and members
  */
-router.post('/:group_id/:user_id/createdScore', authenticateToken, groupValidation, async (req, res) => {
+router.post('/:id/:user_id/addNewScore', authenticateToken, groupValidation, async (req, res) => {
     try {
-        const groupId = req.params.group_id;
+        const groupId = req.params.id;
         const userId = req.params.user_id;
-        const score = req.body.score;
+        const score = req.body.scores;
         await ScoreService.createScoreRow(score, userId, groupId);
         res.sendStatus(200);
     } catch (error) {
@@ -96,9 +94,9 @@ router.post('/:group_id/:user_id/createdScore', authenticateToken, groupValidati
 /**
  * This request update new score row by group id and members
  */
-router.put('/:group_id/:user_id/updateScore', authenticateToken, groupValidation, async (req, res) => {
+router.put('/:id/:user_id/updateScore', authenticateToken, groupValidation, async (req, res) => {
     try {
-        const groupId = req.params.group_id;
+        const groupId = req.params.id;
         const userId = req.params.user_id;
         const score = req.body.score;
         await ScoreService.updateScoreRow(score, userId, groupId);
@@ -111,10 +109,10 @@ router.put('/:group_id/:user_id/updateScore', authenticateToken, groupValidation
 /**
  * This request initialize new score row by group id and members
  */
-router.put('/:group_id/:user_id/updateScore', authenticateToken, groupValidation, async (req, res) => {
+router.put('/:id/:user_id/initializeScore', authenticateToken, groupValidation, async (req, res) => {
     try {
-        const groupId = req.params.group_id;
-        const userId = req.params.user_id;
+        const groupId = req.params.id;
+        const userId = req.user.id;
         await ScoreService.updateScoreRow(0, userId, groupId);
         res.sendStatus(200);
     } catch (error) {

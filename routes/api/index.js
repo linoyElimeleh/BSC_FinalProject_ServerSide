@@ -17,7 +17,7 @@ router.use('/auth', authRouter);
 router.use('/test-auth', testRouter);
 router.use('/users', usersRouter);
 router.use('/groups', groupsRouter);
-router.use('/scores', groupsRouter);
+router.use('/scores', scoresRouter);
 router.use('/tasks', tasksRouter);
 router.use('/search', searchRouter);
 router.use('/join', joinGroupRouter);

@@ -464,6 +464,15 @@ module.exports = {
                     }
                 }
             },
+            addNewScore: {
+                type: 'object',
+                properties: {
+                    scores: {
+                        type: "string",
+                        example: "10"
+                    }
+                }
+            },
 
         },
         securitySchemes: {
