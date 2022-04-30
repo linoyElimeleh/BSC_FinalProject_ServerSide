@@ -53,16 +53,16 @@ module.exports = {
         '/api/groups/{id}/add_members': {
             ...addGroupsMembers
         },
-        '/api/groups/{id}/tasks': {
+        '/api/tasks/{id}/tasks': {
             ...getGroupTasks
         },
-        '/api/groups/{id}/task': {
+        '/api/tasks/{id}/task': {
             ...tasks
         },
-        '/api/groups/{id}/task/set_status': {
+        '/api/tasks/{id}/task/set_status': {
             ...setTaskStatus
         },
-        '/api/groups/{id}/task/assign': {
+        '/api/tasks/{id}/task/assign': {
             ...assignTask
         },
         '/api/search/users': {

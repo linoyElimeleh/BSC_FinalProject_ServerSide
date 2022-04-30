@@ -2,7 +2,7 @@ module.exports = {
     post: {
         tags: ['Tasks'],
         description: 'Create a new task',
-        operationId: 'createTaks',
+        operationId: 'createTasks',
         parameters: [
             {
                 "name": "id",
@@ -91,6 +91,33 @@ module.exports = {
                 description: "The task was updated successfully"
             }
         },
-        security: [{ bearerAuth: [] }]
+        security: [{bearerAuth: []}]
+    },
+    get: {
+        tags: ['Tasks'],
+        description: 'Get an exist task',
+        operationId: 'getTaks',
+        parameters: [
+            {
+                "name": "id",
+                "in": "path",
+                "type": "integer",
+                "required": true,
+                "description": "group id"
+            }
+        ],
+        responses: {
+            '200': {
+                description: "The task was created successfully",
+                content: {
+                    'application/json': {
+                        schema: {
+                            $ref: '#components/schemas/UpdateExistTask'
+                        }
+                    }
+                }
+            }
+        },
+        security: [{bearerAuth: []}]
     },
 }
