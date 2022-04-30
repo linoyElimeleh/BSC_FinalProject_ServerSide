@@ -499,7 +499,19 @@ module.exports = {
                     }
                 }
             },
-
+            changePasswordRequest: {
+                type: 'object',
+                properties: {
+                    oldPassword: {
+                        type: "string",
+                        example: "oldPass123"
+                    },
+                    newPassword: {
+                        type: "string",
+                        example: "newPass456"
+                    }
+                }
+            },
         },
         securitySchemes: {
             bearerAuth: {

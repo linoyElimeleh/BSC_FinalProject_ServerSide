@@ -1,9 +1,11 @@
 const usersDbHandler = require('../models/actions/users');
 const tasksDbHandler = require('../models/actions/tasks');
-const { jwtTokens } = require('../utils/jwtUtils');
+const {jwtTokens} = require('../utils/jwtUtils');
+
 
 class UserService {
-    constructor() { }
+    constructor() {
+    }
 
     static getCurrentUserDetails = async (userId) => {
         const userDetails = await usersDbHandler.getUserById(userId);
@@ -52,6 +54,14 @@ class UserService {
 
     static deleteUserRefreshToken = async (userId, refreshToken) => {
         await usersDbHandler.deleteUserRefreshToken(userId, refreshToken);
+    }
+
+    static getCurrentPassword = async (userId, refreshToken) => {
+        return await usersDbHandler.getPasswordById(userId);
+    }
+
+    static changePassword = async (userId, body, refreshToken) => {
+        return usersDbHandler.updatePasswordById(userId, body.newPassword);
     }
 }
 
