@@ -83,7 +83,7 @@ router.post('/:id/:user_id/addNewScore', authenticateToken, groupValidation, asy
     try {
         const groupId = req.params.id;
         const userId = req.params.user_id;
-        const score = req.body.scores;
+        const score = req.body.score;
         await ScoreService.createScoreRow(score, userId, groupId);
         res.sendStatus(200);
     } catch (error) {

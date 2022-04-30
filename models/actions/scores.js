@@ -34,7 +34,7 @@ const createScoresByUserId = async (score, userId, groupId) => {
     })
 }
 
-const isUserAlreadyCreatedInGroup = async (groupId, userId) => {
+const isUserAlreadyCreatedInGroup = async (userId, groupId) => {
     let user = await pool.query('SELECT * FROM scores WHERE group_id=$1 AND user_id=$2', [groupId, userId]);
     if (user.rows == 0) {
         return false;

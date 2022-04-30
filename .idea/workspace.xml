@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36e4e9c6-24b3-4446-b869-7b68af1402ed" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/routes/docs/routes/scores/getAllGroupsScoresByUser.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/docs/routes/scores/getScoresByGroupAndUser.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/actions/scores.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/actions/scores.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api/scoresRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/scoresRouter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/docs/components.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/docs/components.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/docs/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/docs/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/docs/routes/scores/addNewScore.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/docs/routes/scores/addNewScore.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/scoresService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/scoresService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +100,7 @@
       <workItem from="1649532384748" duration="684000" />
       <workItem from="1649688135375" duration="3832000" />
       <workItem from="1650204742795" duration="579000" />
-      <workItem from="1650793812270" duration="23006000" />
+      <workItem from="1650793812270" duration="24150000" />
     </task>
     <task id="LOCAL-00001" summary="fixing cors bug">
       <created>1646496795897</created>
@@ -186,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651245770492</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="scores api swagger">
+      <created>1651253371135</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1651253371135</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,6 +270,42 @@
           <line>86</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="90" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/services/scoresService.js</url>
+          <line>46</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="92" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/services/scoresService.js</url>
+          <line>47</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="93" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/services/scoresService.js</url>
+          <line>48</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="94" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/services/scoresService.js</url>
+          <line>50</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="95" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/models/actions/scores.js</url>
+          <line>38</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="97" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/models/actions/scores.js</url>
+          <line>39</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="98" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
