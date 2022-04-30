@@ -11,11 +11,10 @@ class ScoresService {
 
     static getTotalScoresByGroupId = async (groupId) => {
         const group = await scoresDbHandler.getScoresByGroupId(groupId);
-        totalScores = 0;
-        for (const user in group) {
-            totalScores += parseInt(user.score);
+        let totalScores = 0;
+        for (let i = 0; i < group.rows.length; i++) {
+            totalScores += parseInt(group.rows[i].score);
         }
-
         return totalScores;
     }
 
@@ -26,9 +25,9 @@ class ScoresService {
 
     static getTotalScoresByUserId = async (userId) => {
         const user = await scoresDbHandler.getScoresByUserId(userId);
-        totalScores = 0;
-        for (const scores in user) {
-            totalScores += parseInt(scores.score);
+        let totalScores = 0;
+        for (let i = 0; i < user.rows.length; i++) {
+            totalScores += parseInt(user.rows[i].score);
         }
 
         return totalScores;

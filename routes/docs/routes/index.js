@@ -20,6 +20,9 @@ const repeatTypes = require('./common/repeatTypes');
 const addNewScore = require('./scores/addNewScore');
 const getScoresByGroupAndUser = require('./scores/getScoresByGroupAndUser');
 const getScoresByUserId = require('./scores/getAllGroupsScoresByUser');
+const getTotalScoresByUserId = require('./scores/getTotalScoresByUser');
+const getTotalScoresByGroupId = require('./scores/getTotalScoresByGroup');
+const getScoresByGroupId = require('./scores/getAllUsersScoresByGroup');
 
 module.exports = {
     paths: {
@@ -88,6 +91,15 @@ module.exports = {
         },
         '/api/scores/{user_id}/groupsScores': {
             ...getScoresByUserId
+        },
+        '/api/scores/{user_id}/userTotalScores': {
+            ...getTotalScoresByUserId
+        },
+        '/api/scores/{group_id}/groupTotalScores': {
+            ...getTotalScoresByGroupId
+        },
+        '/api/scores/{group_id}/usersScores': {
+            ...getScoresByGroupId
         }
     }
 }

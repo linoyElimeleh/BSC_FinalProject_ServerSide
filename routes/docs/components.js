@@ -490,7 +490,15 @@ module.exports = {
                     }
                 }
             },
-
+            getTotalScores: {
+                type: 'object',
+                properties: {
+                    totalScore: {
+                        type: "string",
+                        example: "100"
+                    }
+                }
+            },
 
         },
         securitySchemes: {

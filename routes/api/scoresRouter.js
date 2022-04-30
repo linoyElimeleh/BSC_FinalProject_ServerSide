@@ -31,10 +31,10 @@ router.get('/:id/groupTotalScores', authenticateToken, groupValidation, async (r
 /**
  * Return the total scores by user id
  */
-router.get('/:user_id/userTotalScores', authenticateToken, groupValidation, async (req, res) => {
+router.get('/:user_id/userTotalScores', authenticateToken, async (req, res) => {
     try {
         const totalScores = await ScoreService.getTotalScoresByUserId(req.params.user_id);
-        res.json({...req.user_id, totalScores});
+        res.json({totalScores});
     } catch (error) {
         res.status(500).json({error: error.message});
     }
