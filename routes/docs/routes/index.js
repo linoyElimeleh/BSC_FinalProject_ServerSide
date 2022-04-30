@@ -56,8 +56,13 @@ module.exports = {
         '/api/tasks/{id}/tasks': {
             ...getGroupTasks
         },
-        '/api/tasks/{id}/task': {
-            ...tasks
+        '/api/groups/{id}/task': {
+            post: tasks.post,
+            delete: tasks.delete,
+            put: tasks.put,
+        },
+        '/api/groups/{id}/task/{task_id}': {
+            get: tasks.get
         },
         '/api/tasks/{id}/task/set_status': {
             ...setTaskStatus

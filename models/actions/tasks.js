@@ -1,6 +1,21 @@
 const { pool, executeTransaction } = require('../index');
 
 
+const getTaskById = async (id) => {
+    return await pool.query(
+      `SELECT tasks.*, task_assignee.* FROM tasks
+          JOIN (
+              select task_id, users.display_name, users.id AS user_id, users.image
+              from group_user_tasks 
+              left join users
+              on users.id = group_user_tasks.user_id
+          ) AS task_assignee
+          ON task_assignee.task_id = tasks.id
+          WHERE tasks.id=$1;`,
+      [id]
+    );
+  };
+
 const createTask = async (task, userId, groupId, ownerId) => {
     return await executeTransaction(async (client) => {
         const { title, description, category_id, due_date, done, repeat, end_repeat, urgent, snooze_interval, score } = task;
@@ -101,5 +116,6 @@ module.exports = {
     setTaskStatus,
     getAllGroupTasks,
     getAllMemberTasksByGroup,
-    getTaskGroupUserRelation
+    getTaskGroupUserRelation,
+    getTaskById
 };

@@ -95,8 +95,8 @@ module.exports = {
     },
     get: {
         tags: ['Tasks'],
-        description: 'Get an exist task',
-        operationId: 'getTaks',
+        description: 'Get an existing task',
+        operationId: 'getTask',
         parameters: [
             {
                 "name": "id",
@@ -104,6 +104,13 @@ module.exports = {
                 "type": "integer",
                 "required": true,
                 "description": "group id"
+            },
+            {
+                "name": "task_id",
+                "in": "path",
+                "type": "integer",
+                "required": true,
+                "description": "task id"
             }
         ],
         responses: {
@@ -112,7 +119,7 @@ module.exports = {
                 content: {
                     'application/json': {
                         schema: {
-                            $ref: '#components/schemas/UpdateExistTask'
+                            $ref: '#components/schemas/MembersTasks'
                         }
                     }
                 }

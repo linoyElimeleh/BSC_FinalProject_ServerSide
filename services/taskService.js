@@ -10,6 +10,11 @@ class TaskService {
         await dbHandler.updateTaskAsignee(taskId, userId);
     }
 
+    static getTask = async (taskId) => {
+        const task = await dbHandler.getTaskById(taskId);
+        return task?.rows[0];
+    }
+
     static deleteTask = async (taskId) => {
         await dbHandler.deleteTask(taskId);
     }
