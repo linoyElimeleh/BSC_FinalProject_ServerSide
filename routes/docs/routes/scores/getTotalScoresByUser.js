@@ -1,16 +1,9 @@
 module.exports = {
     get: {
         tags: ['Scores'],
-        description: 'Get user and group score',
-        operationId: 'getScoresByGroupAndUser',
+        description: 'Get user score',
+        operationId: 'getTotalScoresByUser',
         parameters: [
-            {
-                "name": "group_id",
-                "in": "path",
-                "type": "integer",
-                "required": true,
-                "description": "group id"
-            },
             {
                 "name": "user_id",
                 "in": "path",
@@ -25,7 +18,7 @@ module.exports = {
                 content: {
                     'application/json': {
                         schema: {
-                            $ref: '#components/schemas/addNewScore'
+                            $ref: '#components/schemas/getTotalScores'
                         }
                     }
                 }

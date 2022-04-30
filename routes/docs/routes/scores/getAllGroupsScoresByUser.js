@@ -1,7 +1,7 @@
 module.exports = {
     get: {
         tags: ['Scores'],
-        description: 'Add new score',
+        description: 'Get user score',
         operationId: 'getAllGroupsScoresByUser',
         parameters: [
             {

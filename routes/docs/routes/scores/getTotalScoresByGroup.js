@@ -1,8 +1,8 @@
 module.exports = {
     get: {
         tags: ['Scores'],
-        description: 'Get user and group score',
-        operationId: 'getScoresByGroupAndUser',
+        description: 'Get group score',
+        operationId: 'getTotalScoresByGroup',
         parameters: [
             {
                 "name": "group_id",
@@ -10,13 +10,6 @@ module.exports = {
                 "type": "integer",
                 "required": true,
                 "description": "group id"
-            },
-            {
-                "name": "user_id",
-                "in": "path",
-                "type": "integer",
-                "required": true,
-                "description": "user id"
             }
         ],
         responses: {
@@ -25,7 +18,7 @@ module.exports = {
                 content: {
                     'application/json': {
                         schema: {
-                            $ref: '#components/schemas/addNewScore'
+                            $ref: '#components/schemas/getTotalScores'
                         }
                     }
                 }
