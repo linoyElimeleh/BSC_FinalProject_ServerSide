@@ -22,10 +22,32 @@ const getPasswordById = async (userId) => {
 
 const getUserGroups = async (userId) => {
   return await pool.query(
-      `SELECT * FROM groups 
-                            WHERE groups.id IN 
-                            (SELECT group_id FROM group_members WHERE user_id=$1)`,
-      [userId]
+      `SELECT * FROM groups WHERE groups.id IN (SELECT group_id FROM group_members WHERE user_id=$1)`, [userId]
+  );
+};
+
+const getUserGroupsCurrentTaskData = async (userId) => {
+  return await pool.query(
+      `select min_due_date_table.min_due_date, groups.id as group_id, groups.name, groups.description as group_description, groups.image, groups.invite_code,
+scores.score as current_user_score ,
+group_user_tasks.task_id, tasks.title, tasks.description as task_description, tasks.category_id, tasks.due_date, tasks.done, tasks.repeat, tasks.end_repeat, tasks.urgent, tasks.snooze_interval, tasks.score
+from 
+(select MIN(test.due_date) as min_due_date, test.group_id from 
+   (SELECT groups.id as group_id, tasks.due_date, tasks.id as task_id
+    FROM groups
+    Left JOIN group_user_tasks ON group_user_tasks.group_id = groups.id and group_user_tasks.user_id= $1
+    Left JOIN tasks ON tasks.id = group_user_tasks.task_id
+    WHERE groups.id IN (SELECT group_id FROM group_members WHERE user_id=$1)
+   ) as test
+ GROUP BY test.group_id
+) as min_due_date_table 
+Left JOIN groups ON  min_due_date_table.group_id=groups.id
+Left JOIN scores ON min_due_date_table.group_id= scores.group_id  and scores.user_id= $1
+Left JOIN group_user_tasks ON  min_due_date_table.group_id= group_user_tasks.group_id and group_user_tasks.user_id= $1 
+Left JOIN tasks ON tasks.id = group_user_tasks.task_id 
+where min_due_date_table.group_id = groups.id and 
+tasks.due_date = min_due_date_table.min_due_date;`
+      , [userId]
   );
 };
 
@@ -131,4 +153,5 @@ module.exports = {
   deleteUserByEmail,
   getPasswordById,
   updatePasswordById,
+  getUserGroupsCurrentTaskData
 };

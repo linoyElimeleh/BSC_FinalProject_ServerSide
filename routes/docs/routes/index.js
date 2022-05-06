@@ -15,6 +15,7 @@ const assignTask = require('./tasks/assignTask');
 const getUserDetails = require('./user/getUserDetails');
 const getUserTasks = require('./user/getUserTasks');
 const getUserGroups = require('./user/getUserGroups');
+const getUserGroupsCurrentTask = require('./user/getUserGroupsCurrentTask');
 const updateUserDetails = require('./user/updateUserDetails');
 const repeatTypes = require('./common/repeatTypes');
 const addNewScore = require('./scores/addNewScore');
@@ -85,6 +86,9 @@ module.exports = {
         },
         '/api/users/me/groups': {
             ...getUserGroups
+        },
+        '/api/users/me/groupsCurrentTask': {
+            ...getUserGroupsCurrentTask
         },
         '/api/users': {
             ...updateUserDetails

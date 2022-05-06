@@ -22,6 +22,11 @@ class UserService {
         return groups.rows;
     }
 
+    static getUserGroupsCurrentTaskData = async (userId) => {
+        const groups = await usersDbHandler.getUserGroupsCurrentTaskData(userId);
+        return groups.rows;
+    }
+
     static registerUser = async (user) => {
         const newUser = await usersDbHandler.createUser(user);
         const newUserData = newUser.rows[0];

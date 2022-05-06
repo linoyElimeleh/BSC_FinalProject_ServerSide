@@ -43,6 +43,18 @@ router.get('/me/groups', authenticateToken, async (req, res) => {
 });
 
 /**
+ * This request returns user with his groups and current task for each one
+ */
+router.get('/me/groupsCurrentTask', authenticateToken, async (req, res) => {
+    try {
+        const groups = await UserService.getUserGroupsCurrentTaskData(req.user.id);
+        res.json(groups);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+/**
  * Register to our app request with body contains email,password, display_name, birth_date, image
  */
 router.post('/register', async (req, res) => {

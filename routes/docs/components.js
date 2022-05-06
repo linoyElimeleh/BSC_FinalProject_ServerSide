@@ -421,6 +421,83 @@ module.exports = {
                     },
                 }
             },
+            GetUserGroupsCurrentTasks: {
+                type: 'object',
+                properties: {
+                    min_due_date: {
+                        type: "date",
+                        example: "1997-01-01"
+                    },
+                    group_id: {
+                        type: "integer",
+                        example: 1111
+                    },
+                    name: {
+                        type: "string",
+                        example: "Todo Bom name"
+                    },
+                    group_description: {
+                        type: "string",
+                        example: "The best group In the World"
+                    },
+                    image: {
+                        type: "string",
+                        example: "https://some-image.com"
+                    },
+                    invite_code: {
+                        type: "string",
+                        example: "94b60e4d-2015-4adf-bacc-5f8421ac51b4"
+                    },
+                    current_user_score: {
+                        type: "integer",
+                        example: "10"
+                    },
+                    task_id: {
+                        type: "integer",
+                        example: "123"
+                    },
+                    title: {
+                        type: "string",
+                        example: "Todo Bom task title"
+                    },
+                    task_description: {
+                        type: "string",
+                        example: "The best task In the World"
+                    },
+                    category_id: {
+                        type: "integer",
+                        example: 1234
+                    },
+                    due_date: {
+                        type: "date",
+                        example: "1997-01-01"
+                    },
+                    done: {
+                        type: "boolean",
+                        example: true
+                    },
+                    repeat: {
+                        type: "integer",
+                        example: 2
+                    },
+                    end_repeat: {
+                        type: "date",
+                        example: "1997-01-01"
+                    },
+                    urgent: {
+                        type: "boolean",
+                        example: false
+                    },
+                    snooze_interval: {
+                        type: "integer",
+                        example: 4
+                    },
+                    score: {
+                        type: "integer",
+                        example: 500
+                    }
+                }
+            },
             UserUpdate: {
                 type: 'object',
                 properties: {

@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36e4e9c6-24b3-4446-b869-7b68af1402ed" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/routes/docs/routes/user/changeUserPassword.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/docs/routes/user/getUserGroupsCurrentTask.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/actions/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/actions/users.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api/usersRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/usersRouter.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/docs/components.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/docs/components.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/docs/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/docs/routes/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/userService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/userService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -106,7 +105,7 @@
       <workItem from="1649532384748" duration="684000" />
       <workItem from="1649688135375" duration="3832000" />
       <workItem from="1650204742795" duration="579000" />
-      <workItem from="1650793812270" duration="36721000" />
+      <workItem from="1650793812270" duration="46405000" />
     </task>
     <task id="LOCAL-00001" summary="fixing cors bug">
       <created>1646496795897</created>
@@ -220,7 +219,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651298844942</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="change password">
+      <created>1651333596323</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1651333596323</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,7 +258,8 @@
     <MESSAGE value="new apis swagger" />
     <MESSAGE value="get groups and users score" />
     <MESSAGE value="change task service" />
-    <option name="LAST_COMMIT_MESSAGE" value="change task service" />
+    <MESSAGE value="change password" />
+    <option name="LAST_COMMIT_MESSAGE" value="change password" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -261,16 +268,6 @@
           <url>file://$PROJECT_DIR$/services/taskService.js</url>
           <line>22</line>
           <option name="timeStamp" value="63" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/models/actions/tasks.js</url>
-          <line>40</line>
-          <option name="timeStamp" value="65" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/services/scoresService.js</url>
-          <line>49</line>
-          <option name="timeStamp" value="95" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/models/actions/scores.js</url>
@@ -298,28 +295,22 @@
           <option name="timeStamp" value="110" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/utils/authenticationUtils.js</url>
-          <line>3</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="116" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/utils/authenticationUtils.js</url>
-          <line>7</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="118" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/routes/api/usersRouter.js</url>
-          <line>83</line>
+          <line>95</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="126" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/routes/api/usersRouter.js</url>
-          <line>86</line>
+          <line>98</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="127" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/routes/api/usersRouter.js</url>
+          <line>100</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="132" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
