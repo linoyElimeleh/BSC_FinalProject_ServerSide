@@ -25,6 +25,7 @@ const getTotalScoresByUserId = require('./scores/getTotalScoresByUser');
 const getTotalScoresByGroupId = require('./scores/getTotalScoresByGroup');
 const getScoresByGroupId = require('./scores/getAllUsersScoresByGroup');
 const changePassword = require('./user/changeUserPassword');
+const rejectTask = require('./scores/rejectTask');
 
 module.exports = {
     paths: {
@@ -113,6 +114,9 @@ module.exports = {
         },
         '/api/scores/{group_id}/usersScores': {
             ...getScoresByGroupId
+        },
+        '/api/scores/{group_id}/{user_id}/rejectTask': {
+            ...rejectTask
         }
     }
 }

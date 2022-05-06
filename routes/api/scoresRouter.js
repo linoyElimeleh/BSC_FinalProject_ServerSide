@@ -92,6 +92,26 @@ router.post('/:id/:user_id/addNewScore', authenticateToken, groupValidation, asy
 });
 
 /**
+ * This request reject task by group id and members
+ */
+router.put('/:id/:user_id/rejectTask', authenticateToken, groupValidation, async (req, res) => {
+    try {
+        const groupId = req.params.id;
+        const userId = req.params.user_id;
+        const score = req.body.score;
+
+        // reducre scores
+        await ScoreService.updateScoreRow(-score, userId, groupId);
+
+        //todo add update to time
+
+        res.sendStatus(200);
+    } catch (error) {
+        res.status(500).json({error: error.message});
+    }
+});
+
+/**
  * This request update new score row by group id and members
  */
 router.put('/:id/:user_id/addNewScore', authenticateToken, groupValidation, async (req, res) => {

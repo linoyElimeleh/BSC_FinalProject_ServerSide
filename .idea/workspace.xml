@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36e4e9c6-24b3-4446-b869-7b68af1402ed" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/routes/docs/routes/user/getUserGroupsCurrentTask.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/docs/routes/scores/rejectTask.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/actions/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/actions/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/usersRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/usersRouter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/docs/components.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/docs/components.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/userService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/userService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api/scoresRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/scoresRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/docs/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/docs/routes/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,15 +45,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/routes/docs/routes/user" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/routes/docs/routes/scores" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.CommitDialog" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/routes/docs/routes/user" />
       <recent name="$PROJECT_DIR$/routes/docs/routes/scores" />
+      <recent name="$PROJECT_DIR$/routes/docs/routes/user" />
       <recent name="$PROJECT_DIR$/services" />
       <recent name="$PROJECT_DIR$/models/actions" />
       <recent name="$PROJECT_DIR$/routes/api" />
@@ -105,7 +103,7 @@
       <workItem from="1649532384748" duration="684000" />
       <workItem from="1649688135375" duration="3832000" />
       <workItem from="1650204742795" duration="579000" />
-      <workItem from="1650793812270" duration="46405000" />
+      <workItem from="1650793812270" duration="48351000" />
     </task>
     <task id="LOCAL-00001" summary="fixing cors bug">
       <created>1646496795897</created>
@@ -226,7 +224,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651333596323</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="group current tasks">
+      <created>1651833894480</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1651833894480</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,7 +264,8 @@
     <MESSAGE value="get groups and users score" />
     <MESSAGE value="change task service" />
     <MESSAGE value="change password" />
-    <option name="LAST_COMMIT_MESSAGE" value="change password" />
+    <MESSAGE value="group current tasks" />
+    <option name="LAST_COMMIT_MESSAGE" value="group current tasks" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
