@@ -72,7 +72,7 @@ router.put('/:id/task/assign', authenticateToken, groupValidation, taskOwnerVali
 /**
  * This request returns the task of the groups
  */
-router.get('/:id/task', authenticateToken, groupValidation, async (req, res) => {
+router.get('/:id/tasks', authenticateToken, groupValidation, async (req, res) => {
     try {
         const groupId = req.params.id;
         const tasks = await GroupService.getGroupTasks(groupId);

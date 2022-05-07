@@ -394,6 +394,10 @@ module.exports = {
                         type: "integer",
                         example: 3
                     },
+                    owner_id: {
+                        type: "integer",
+                        example: 3
+                    },
                 }
             },
             GetUserGroups: {

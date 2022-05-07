@@ -18,7 +18,7 @@ module.exports = {
                 content: {
                     'application/json': {
                         schema: {
-                            $ref: '#components/schemas/MembersTasks'
+                            $ref: '#components/schemas/GetUserTask'
                         }
                     }
                 }

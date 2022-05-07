@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36e4e9c6-24b3-4446-b869-7b68af1402ed" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/actions/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/actions/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/usersRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/usersRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api/tasksRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/tasksRouter.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/docs/components.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/docs/components.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/docs/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/docs/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/userService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/userService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/docs/routes/group/getGroupTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/docs/routes/group/getGroupTask.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -316,7 +313,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/routes/api/usersRouter.js</url>
           <line>79</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="140" />
         </line-breakpoint>
       </breakpoints>
