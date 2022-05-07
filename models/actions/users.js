@@ -45,8 +45,8 @@ Left JOIN groups ON  min_due_date_table.group_id=groups.id
 Left JOIN scores ON min_due_date_table.group_id= scores.group_id  and scores.user_id= $1
 Left JOIN group_user_tasks ON  min_due_date_table.group_id= group_user_tasks.group_id and group_user_tasks.user_id= $1 
 Left JOIN tasks ON tasks.id = group_user_tasks.task_id 
-where min_due_date_table.group_id = groups.id and 
-tasks.due_date = min_due_date_table.min_due_date;`
+where min_due_date_table.min_due_date IS NULL or
+tasks.due_date = min_due_date_table.min_due_date`
       , [userId]
   );
 };
