@@ -6,7 +6,7 @@ const getAllUsers = async () => {
 };
 
 const getUserByEmail = async (email) => {
-  return await pool.query("SELECT id, display_name, email, birth_date, image, password FROM users WHERE email = $1", [email]);
+  return await pool.query("SELECT id, display_name, email, birth_date, image, password, notification_tokens FROM users WHERE email = $1", [email]);
 };
 
 const getUserById = async (userId) => {
@@ -53,11 +53,17 @@ tasks.due_date = min_due_date_table.min_due_date`
 
 const createUser = async (user) => {
   return await executeTransaction(async (client) => {
-    const {display_name, email, birth_date, password, image} = user;
+    const { display_name, email, birth_date, password, image, notification_token } = user;
     const hashedPassword = await encryptPassword(password);
+    let queryBase = "INSERT INTO users (display_name, email, birth_date, password, image) VALUES ($1, $2, $3, $4, $5) RETURNING *"
+    let paramsBase = [display_name, email, birth_date, hashedPassword, image]
+    if (notification_token){
+      queryBase = "INSERT INTO users (display_name, email, birth_date, password, image, notification_tokens) VALUES ($1, $2, $3, $4, $5, ARRAY[$6]) RETURNING *"
+      paramsBase.push(notification_token);
+    }
     return await client.query(
-        "INSERT INTO users (display_name, email, birth_date, password, image) VALUES ($1, $2, $3, $4, $5) RETURNING *",
-        [display_name, email, birth_date, hashedPassword, image]
+      queryBase,
+      paramsBase
     );
   });
 };
@@ -127,6 +133,15 @@ const deleteUserRefreshToken = async (userId, refreshToken) => {
   });
 };
 
+const addUserNotificationToken = async (userId, notification_token) => {
+  await executeTransaction(async (client) => {
+    await client.query(
+      "UPDATE users SET notification_tokens=array_append(users.notification_tokens, $2) WHERE id=$1",
+      [userId, notification_token]
+    );
+  });
+};
+
 const deleteUserByEmail = async (email) => {
   await executeTransaction(async (client) => {
     await client.query(
@@ -146,6 +161,7 @@ module.exports = {
   getUserGroups,
   searchUsers,
   addUserRefreshToken,
+  addUserNotificationToken,
   getCurrentRefreshTokenIndex,
   updateUserRefreshToken,
   deleteUserRefreshToken,

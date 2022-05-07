@@ -11,7 +11,7 @@ const authenticateToken = require('../../middleware/authorization');
  */
 router.post('/login', async (req, res) => {
     try {
-        const { email, password } = req.body;
+        const { email, password, notification_token } = req.body;
         const users = await dbHandler.getUserByEmail(email);
         if (users.rows.length === 0) return res.status(400).json({ error: "Email or password are incorrect" });
         //PASSWORD CHECK
@@ -21,6 +21,9 @@ router.post('/login', async (req, res) => {
         //JWT
         const tokens = jwtTokens(user); //Gets access and refresh tokens
         await UserService.addUserRefreshToken(user.id, tokens.refreshToken);
+        if (!user.notification_tokens?.includes(notification_token) && notification_token){
+            await UserService.addUserNotificationToken(user.id, notification_token);
+        }
         res.cookie('refresh_token', tokens.refreshToken, {
             ...(process.env.COOKIE_DOMAIN && { domain: process.env.COOKIE_DOMAIN }),
             httpOnly: true,
