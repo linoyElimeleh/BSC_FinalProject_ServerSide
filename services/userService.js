@@ -35,8 +35,8 @@ class UserService {
         return tokens;
     }
 
-    static updateUser = async (user) => {
-        await usersDbHandler.updateUser(user);
+    static updateUser = async (userDetails, userId) => {
+        await usersDbHandler.updateUser(userDetails, userId);
     }
 
     static searchUsers = async (query) => {

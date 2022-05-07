@@ -73,9 +73,11 @@ router.post('/register', async (req, res) => {
 /**
  * This request update user by body contains : id, display_name, image
  */
-router.put('/', authenticateToken, async (req, res) => {
+router.put('/updateProfile', authenticateToken, async (req, res) => {
     try {
-        await UserService.updateUser(req.body);
+        const userId = req.user.id;
+        const body = req.body;
+        await UserService.updateUser(body, userId);
         res.sendStatus(200);
     } catch (error) {
         res.status(500).json({error: error.message});

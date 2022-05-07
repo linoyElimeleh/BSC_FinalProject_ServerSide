@@ -501,17 +501,17 @@ module.exports = {
             UserUpdate: {
                 type: 'object',
                 properties: {
-                    id: {
-                        type: "integer",
-                        example: 1111
-                    },
-                    display_name: {
+                    displayName: {
                         type: "string",
-                        example: "Todo Bom name"
+                        example: "Israel Israeli"
                     },
                     image: {
                         type: "string",
                         example: "https://some-image.com"
+                    },
+                    birthDate: {
+                        type: "date",
+                        example: "1997-01-01"
                     },
                 }
             },

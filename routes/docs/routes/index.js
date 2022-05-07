@@ -91,7 +91,7 @@ module.exports = {
         '/api/users/me/groupsCurrentTask': {
             ...getUserGroupsCurrentTask
         },
-        '/api/users': {
+        '/api/users/updateProfile': {
             ...updateUserDetails
         },
         '/api/common/repeat_types': {

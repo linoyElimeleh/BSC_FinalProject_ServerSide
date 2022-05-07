@@ -72,13 +72,12 @@ const updatePasswordById = async (userId, password) => {
   });
 };
 
-const updateUser = async (user) => {
+const updateUser = async (userBody, userId) => {
   await executeTransaction(async (client) => {
-    const {id, display_name, image} = user;
-    //check if await is needed
+    const {displayName, image, birthDate} = userBody;
     await client.query(
-        "UPDATE users SET display_name=$1, image=$2 WHERE id=$3",
-        [display_name, image, id]
+        "UPDATE users SET display_name=$1, image=$2, birth_date=$3 WHERE id=$4",
+        [displayName, image, birthDate, userId]
     );
   });
 };
