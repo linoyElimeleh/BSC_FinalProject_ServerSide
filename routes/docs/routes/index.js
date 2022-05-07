@@ -24,7 +24,7 @@ const getScoresByUserId = require('./scores/getAllGroupsScoresByUser');
 const getTotalScoresByUserId = require('./scores/getTotalScoresByUser');
 const getTotalScoresByGroupId = require('./scores/getTotalScoresByGroup');
 const getScoresByGroupId = require('./scores/getAllUsersScoresByGroup');
-const changePassword = require('./user/changeUserPassword');
+const changePassword = require('./auth/changeUserPassword');
 const rejectTask = require('./scores/rejectTask');
 
 module.exports = {
@@ -79,7 +79,7 @@ module.exports = {
         '/api/users/me': {
             ...getUserDetails
         },
-        '/api/users/changePassword': {
+        '/api/auth/changePassword': {
             ...changePassword
         },
         '/api/users/me/tasks': {

@@ -4,6 +4,7 @@ const dbHandler = require('../../models/actions/users');
 const { jwtTokens, verifyToken } = require('../../utils/jwtUtils');
 const { validatePassword } = require('../../utils/authenticationUtils');
 const UserService = require('../../services/userService');
+const authenticateToken = require('../../middleware/authorization');
 
 /**
  * Login request
@@ -74,6 +75,28 @@ router.delete('/refresh_token', (req, res) => {
         });
     } catch (error) {
         res.status(401).json({ error: error.message });
+    }
+});
+
+
+/**
+ * This request changing password by userId, and body contains oldPassword and newPassword.
+ */
+router.put('/changePassword', authenticateToken, async (req, res) => {
+    try {
+        const userId = req.user.id;
+        const body = req.body;
+
+        // check validation
+        const oldPassword = await UserService.getCurrentPassword(userId);
+        const validPassword = await validatePassword(body.oldPassword, oldPassword);
+        if (!validPassword) return res.status(400).json({error: "Password is incorrect"});
+
+        // update password
+        const userDetails = await UserService.changePassword(userId, body);
+        return res.status(200).json({ message: 'Password has changed.' });
+    } catch (error) {
+        res.status(500).json({error: error.message});
     }
 });
 

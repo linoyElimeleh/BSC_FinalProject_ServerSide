@@ -1,6 +1,6 @@
 module.exports = {
     put: {
-        tags: ['User'],
+        tags: ['Authentication'],
         description: 'Change user password',
         operationId: 'changeUserPassword',
         requestBody: {

@@ -82,26 +82,4 @@ router.put('/', authenticateToken, async (req, res) => {
     }
 });
 
-/**
- * Thie request changing password by userId, and body contains oldPassword and newPassword.
- */
-router.put('/changePassword', authenticateToken, async (req, res) => {
-    try {
-        const userId = req.user.id;
-        const body = req.body;
-
-        // check validation
-        const oldPassword = await UserService.getCurrentPassword(userId);
-        const validPassword = await validatePassword(body.oldPassword, oldPassword);
-        if (!validPassword) return res.status(400).json({error: "Password is incorrect"});
-
-        // update password
-        const userDetails = await UserService.changePassword(userId, body);
-
-        res.json(userDetails);
-    } catch (error) {
-        res.status(500).json({error: error.message});
-    }
-});
-
 module.exports = router;
