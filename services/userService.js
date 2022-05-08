@@ -68,6 +68,10 @@ class UserService {
     static changePassword = async (userId, body, refreshToken) => {
         return usersDbHandler.updatePasswordById(userId, body.newPassword);
     }
+
+    static addUserNotificationToken = async (userId, notification_token) => {
+        await usersDbHandler.addUserNotificationToken(userId, notification_token);
+    }
 }
 
 module.exports = UserService;
