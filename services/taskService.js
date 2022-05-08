@@ -15,6 +15,11 @@ class TaskService {
         return task?.rows[0];
     }
 
+    static getTaskScore = async (taskId) => {
+        const task = await dbHandler.getTaskScoreById(taskId);
+        return task?.rows[0].score;
+    }
+
     static deleteTask = async (taskId) => {
         await dbHandler.deleteTask(taskId);
     }

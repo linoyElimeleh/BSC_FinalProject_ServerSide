@@ -2,6 +2,7 @@ const authenticateToken = require('../../middleware/authorization');
 const ScoreService = require('../../services/scoresService');
 const {groupValidation, adminValidation, isUserEligibleToJoin} = require('../../middleware/groupValidations');
 const router = require('express').Router();
+const TaskService = require('../../services/taskService');
 
 /**
  * Return the group data by group id
@@ -94,16 +95,33 @@ router.post('/:id/:user_id/addNewScore', authenticateToken, groupValidation, asy
 /**
  * This request reject task by group id and members
  */
-router.put('/:id/:user_id/rejectTask', authenticateToken, groupValidation, async (req, res) => {
+router.put('/:task_id/rejectTask', authenticateToken, async (req, res) => {
     try {
-        const groupId = req.params.id;
-        const userId = req.params.user_id;
-        const score = req.body.score;
+        const taskId = req.params.task_id;
+        //const userId = req.user.id;
+
+        // Get task scores
+        const taskScore = await TaskService.getTaskScore(taskId);
+        const scoreToRemove = taskScore * 0.25;
+
+        // get details about the task - userID and groupID
+        const taskUserGroupRelation = await TaskService.getGroupUserTaskRelation(taskId);
+        const userId = taskUserGroupRelation.user_id;
+        const groupId = taskUserGroupRelation.group_id;
+
+        // get current scores of user
+        const currentScores = await ScoreService.getSpecificScoresByUserIdAndGroupId(userId, groupId);
+
+        // check if scores is what we expect
+        if (currentScores == null || (currentScores - scoreToRemove) < 0) {
+            return res.status(400).json({error: "Error: User dont have the scores to reject this task"});
+        }
 
         // reducre scores
-        await ScoreService.updateScoreRow(-score, userId, groupId);
+        await ScoreService.updateScoreRow((currentScores - scoreToRemove), userId, groupId);
 
-        //todo add update to time
+        //todo remove user from this task- unassign
+        await TaskService.assignTask(taskId, null);
 
         res.sendStatus(200);
     } catch (error) {

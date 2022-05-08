@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36e4e9c6-24b3-4446-b869-7b68af1402ed" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/routes/api/tasksRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/tasksRouter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/docs/components.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/docs/components.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/docs/routes/group/getGroupTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/docs/routes/group/getGroupTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/actions/tasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/actions/tasks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api/scoresRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/scoresRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/docs/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/docs/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/docs/routes/scores/rejectTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/docs/routes/scores/rejectTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/taskService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/taskService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +247,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651926797518</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="fix task route">
+      <created>1651933440634</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1651933440637</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -280,36 +290,12 @@
     <MESSAGE value="group current tasks" />
     <MESSAGE value="yanna fix bug- user groups tasks" />
     <MESSAGE value="change password fix bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="change password fix bug" />
+    <MESSAGE value="fix task route" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix task route" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/services/taskService.js</url>
-          <line>22</line>
-          <option name="timeStamp" value="63" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/models/actions/scores.js</url>
-          <line>16</line>
-          <option name="timeStamp" value="99" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/routes/api/tasksRouter.js</url>
-          <line>76</line>
-          <option name="timeStamp" value="108" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/routes/api/tasksRouter.js</url>
-          <line>77</line>
-          <option name="timeStamp" value="109" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/routes/api/tasksRouter.js</url>
-          <line>78</line>
-          <option name="timeStamp" value="110" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/routes/api/usersRouter.js</url>
           <line>79</line>

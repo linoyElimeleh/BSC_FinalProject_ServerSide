@@ -115,7 +115,7 @@ module.exports = {
         '/api/scores/{group_id}/usersScores': {
             ...getScoresByGroupId
         },
-        '/api/scores/{group_id}/{user_id}/rejectTask': {
+        '/api/scores/{task_id}/rejectTask': {
             ...rejectTask
         }
     }

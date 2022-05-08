@@ -12,13 +12,31 @@ const getTaskById = async (id) => {
           ) AS task_assignee
           ON task_assignee.task_id = tasks.id
           WHERE tasks.id=$1;`,
-      [id]
+        [id]
     );
-  };
+};
+
+const getTaskScoreById = async (id) => {
+    return await pool.query(
+        `select score from tasks where id=$1;`,
+        [id]
+    );
+};
 
 const createTask = async (task, userId, groupId, ownerId) => {
     return await executeTransaction(async (client) => {
-        const { title, description, category_id, due_date, done, repeat, end_repeat, urgent, snooze_interval, score } = task;
+        const {
+            title,
+            description,
+            category_id,
+            due_date,
+            done,
+            repeat,
+            end_repeat,
+            urgent,
+            snooze_interval,
+            score
+        } = task;
         const newTask = await createTaskClient(client, title, description, category_id, due_date, done, repeat, end_repeat, urgent, snooze_interval, score);
         const taskDetails = newTask.rows[0];
         await assignTaskClient(client, taskDetails.id, userId, groupId, ownerId);
@@ -117,5 +135,6 @@ module.exports = {
     getAllGroupTasks,
     getAllMemberTasksByGroup,
     getTaskGroupUserRelation,
-    getTaskById
+    getTaskById,
+    getTaskScoreById
 };
