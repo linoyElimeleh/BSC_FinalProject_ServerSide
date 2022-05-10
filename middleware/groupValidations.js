@@ -30,13 +30,18 @@ const groupValidation = async (req, res, next) => {
             res.status(401).json({ error: e.message });
             return;
         }
-        throw e;
+        res.status(401).json({ error: e.message });
+        return;
     }
 }
 
 const isUserEligibleToJoin = async (req, res, next) => {
     try {
         const groupInviteCode = req.body.invite_code;
+        if(!groupInviteCode) {
+            res.status(400).json({ error: 'Invalid invite code' });
+            return;
+        }
         const group = await GroupService.getGroupByInviteCode(groupInviteCode);
         if (!group) {
             throw new GroupNotExist()
