@@ -7,7 +7,10 @@ const UserNotAdmin = require("../exceptions/UserNotAdmin");
 const groupValidation = async (req, res, next) => {
     try {
         const groupId = req.params.id;
-        if(!groupId) res.status(400).json({ error: 'Invalid group id' });
+        if(!groupId) {
+            res.status(400).json({ error: 'Invalid group id' });
+            return;
+        }
         const group = await GroupService.getGroupById(groupId);
         if (!group) {
             throw new GroupNotExist()
