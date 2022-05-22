@@ -6,7 +6,10 @@ const getAllScores = async () => {
 }
 
 const getScoresByGroupId = async (groupId) => {
-    return await pool.query('SELECT * FROM scores WHERE group_id = $1', [groupId]);
+    return await pool.query('SELECT scores.user_id, scores.group_id, scores.score, users.display_name, users.image \n' +
+        'FROM scores \n' +
+        'Left join users on scores.user_id = users.id\n' +
+        'WHERE group_id = $1', [groupId]);
 }
 
 const getScoresByUserId = async (userId) => {

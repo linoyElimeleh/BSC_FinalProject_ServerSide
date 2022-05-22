@@ -568,6 +568,14 @@ module.exports = {
                     score: {
                         type: "string",
                         example: "100"
+                    },
+                    display_name: {
+                        type: "string",
+                        example: "name"
+                    },
+                    image: {
+                        type: "string",
+                        example: "https://some-image.com"
                     }
                 }
             },
