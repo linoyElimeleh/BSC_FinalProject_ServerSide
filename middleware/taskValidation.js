@@ -28,7 +28,7 @@ const isGroupAdmin = async (req, res, callback) => {
     try {
         const groupId = req.group.id;
         const userId = req.user.id;
-        const taskId = req.body.taskId || req.body.id;
+        const taskId = req.body.task.taskId ?? req.body.task.id;
         const isAdmin = await GroupService.isUserAdmin(groupId, userId);
         return await callback(isAdmin, groupId, userId, taskId);
     } catch (e) {

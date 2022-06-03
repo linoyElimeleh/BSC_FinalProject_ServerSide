@@ -70,9 +70,10 @@ router.post('/:id/task', authenticateToken, groupValidation, async (req, res) =>
 
 router.put('/:id/task', authenticateToken, groupValidation, taskReporterValidation, async (req, res) => {
     try {
-        await TaskService.updateTask(req.body);
-        res.sendStatus(200);
-    } catch (error) {
+        const task = await TaskService.updateTask(req.body.task);
+        if (req.body.userId) await TaskService.assignTask(req.body.userId, req.body.task.id);
+        res.json(task.rows);
+        } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });

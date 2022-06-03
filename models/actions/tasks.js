@@ -54,9 +54,9 @@ const updateTaskAsignee = async (taskId, userId) => {
 }
 
 const updateTask = async (task) => {
-    await executeTransaction(async (client) => {
+    return await executeTransaction(async (client) => {
         const { id, title, description, category_id, due_date, done, repeat, end_repeat, urgent, snooze_interval, score } = task;
-        await client.query(
+        return await client.query(
             `UPDATE tasks SET title=$1, description=$2, category_id=$3, due_date=$4, done=$5,
                 repeat=$6, end_repeat=$7, urgent=$8, snooze_interval=$9, score=$10
                 WHERE id=$11

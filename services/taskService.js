@@ -25,7 +25,7 @@ class TaskService {
     }
 
     static updateTask = async (task) => {
-        await dbHandler.updateTask(task);
+        return await dbHandler.updateTask(task);
     }
 
     static setTaskStatus = async (taskId, status) => {
