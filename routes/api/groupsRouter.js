@@ -5,7 +5,7 @@ const TaskService = require('../../services/taskService');
 const ScoreService = require('../../services/scoreService');
 const { taskOwnerValidation, taskReporterValidation, taskAssigneeValidation } = require('../../middleware/taskValidation');
 const TaskNotRejectable = require('../../exceptions/TaskNotRejectable');
-const { createScoreRow } = require('../../services/scoreService');
+const { createScoreRow, updateScoreRow } = require('../../services/scoreService');
 const router = require('express').Router();
 
 /**
@@ -99,7 +99,10 @@ router.delete('/:id/task', authenticateToken, groupValidation, taskOwnerValidati
 
 router.put('/:id/task/set_status', authenticateToken, groupValidation, taskReporterValidation, async (req, res) => {
     try {
-        await TaskService.setTaskStatus(req.body.task.taskId, req.body.task.status);
+        const {taskId, status} = req.body.task;
+        const task = await TaskService.setTaskStatus(taskId, status);
+        const taskAssignee = await TaskService.getGroupUserTaskRelation(taskId);
+        if (status) updateScoreRow(task.score, taskAssignee.user_id, req.params.id);
         res.sendStatus(200);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -130,7 +133,7 @@ router.put('/:id/task/assign', authenticateToken, groupValidation, taskOwnerVali
             return res.status(400).json(new TaskNotRejectable());
         }
 
-        await ScoreService.updateScoreRow(score - scoreToRemove, userId, groupId);
+        await ScoreService.updateScoreRow(-scoreToRemove, userId, groupId);
         await TaskService.assignTask(task_id, null);
 
         res.sendStatus(200);
@@ -183,6 +186,7 @@ router.post('/join', authenticateToken, isUserEligibleToJoin, async (req, res) =
     try {
         //req.group is received after isUserEligibleToJoin and req.user is received after authenticateToken
         await GroupService.addGroupMembers(req.group.id, [req.user.id]);
+        await createScoreRow(0, req.user.id, req.group.id);
         res.sendStatus(200);
     } catch (error) {
         res.status(500).json({ error: error.message });

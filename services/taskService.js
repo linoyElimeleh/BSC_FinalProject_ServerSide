@@ -29,7 +29,8 @@ class TaskService {
     }
 
     static setTaskStatus = async (taskId, status) => {
-        await dbHandler.setTaskStatus(taskId, status);
+        const result = await dbHandler.setTaskStatus(taskId, status);
+        return result.rows[0];
     }
 
     static getGroupUserTaskRelation = async (taskId) => {

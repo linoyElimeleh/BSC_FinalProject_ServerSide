@@ -102,9 +102,9 @@ const deleteTask = async (taskId) => {
 }
 
 const setTaskStatus = async (taskId, status) => {
-    await executeTransaction(async (client) => {
-        await client.query(
-            `UPDATE tasks SET done=$2 WHERE id=$1`
+    return await executeTransaction(async (client) => {
+        return await client.query(
+            `UPDATE tasks SET done=$2 WHERE id=$1 RETURNING *`
             , [taskId, status]
         );
     })

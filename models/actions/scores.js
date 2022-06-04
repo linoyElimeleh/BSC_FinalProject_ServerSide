@@ -23,7 +23,7 @@ const getUserScoreByGroup = async (userId, groupId) => {
 const updateScoreByUserId = async (score, userId ,groupId) => {
     await executeTransaction(async (client) => {
         await client.query(
-            'UPDATE scores SET score=$1 WHERE group_id=$2 AND user_id=$3 RETURNING *'
+            'UPDATE scores SET score=score+$1 WHERE group_id=$2 AND user_id=$3 RETURNING *'
             , [score, groupId, userId]);
     })
 }
