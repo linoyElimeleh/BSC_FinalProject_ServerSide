@@ -61,7 +61,11 @@ router.get('/:id/tasks', authenticateToken, groupValidation, async (req, res) =>
  */
 router.post('/:id/task', authenticateToken, groupValidation, async (req, res) => {
     try {
-        const newTask = await TaskService.createTask(req.body.task, req.body.userId, req.params.id, req.user.id);
+        user = req.body.userId;
+        if (user == null) {
+            user = req.user.id
+        }
+        const newTask = await TaskService.createTask(req.body.task, user, req.params.id, req.user.id);
         res.json(newTask);
     } catch (error) {
         res.status(500).json({ error: error.message });
