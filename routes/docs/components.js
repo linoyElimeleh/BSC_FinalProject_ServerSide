@@ -225,50 +225,59 @@ module.exports = {
             UpdateExistTask: {
                 type: 'object',
                 properties: {
-                    id: {
+                    task: {
+                        type: 'object',
+                        properties: {
+                            id: {
+                                type: "integer",
+                                example: 500
+                            },
+                            title: {
+                                type: "string",
+                                example: "Todo Bom Title"
+                            },
+                            description: {
+                                type: "string",
+                                example: "The best Task In the World"
+                            },
+                            category_id: {
+                                type: "integer",
+                                example: 1234
+                            },
+                            due_date: {
+                                type: "timestamp",
+                                example: 1649505357023
+                            },
+                            done: {
+                                type: "boolean",
+                                example: true
+                            },
+                            repeat: {
+                                type: "integer",
+                                example: 2
+                            },
+                            end_repeat: {
+                                type: "timestamp",
+                                example: 1649505357023
+                            },
+                            urgent: {
+                                type: "boolean",
+                                example: false
+                            },
+                            snooze_interval: {
+                                type: "integer",
+                                example: 4
+                            },
+                            level: {
+                                type: "string",
+                                example: "EASY"
+                            }
+                        }
+                    },
+                    userId: {
                         type: "integer",
                         example: 500
-                    },
-                    title: {
-                        type: "string",
-                        example: "Todo Bom Title"
-                    },
-                    description: {
-                        type: "string",
-                        example: "The best Task In the World"
-                    },
-                    category_id: {
-                        type: "integer",
-                        example: 1234
-                    },
-                    due_date: {
-                        type: "timestamp",
-                        example: 1649505357023
-                    },
-                    done: {
-                        type: "boolean",
-                        example: true
-                    },
-                    repeat: {
-                        type: "integer",
-                        example: 2
-                    },
-                    end_repeat: {
-                        type: "timestamp",
-                        example: 1649505357023
-                    },
-                    urgent: {
-                        type: "boolean",
-                        example: false
-                    },
-                    snooze_interval: {
-                        type: "integer",
-                        example: 4
-                    },
-                    level: {
-                        type: "string",
-                        example: "EASY"
-                    },
+                    }
                 }
             },
             DeleteTask: {
