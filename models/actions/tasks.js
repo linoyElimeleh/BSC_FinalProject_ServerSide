@@ -45,7 +45,6 @@ const createTask = async (task, userId, groupId, ownerId) => {
             case "MEDIUM":
                 score = 100;
             case "EASY":
-                score = 50;
             default:
                 score = 50;
         }
