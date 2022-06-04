@@ -42,7 +42,7 @@ router.put('/:id/task', authenticateToken, groupValidation, taskReporterValidati
  */
 router.delete('/:id/task', authenticateToken, groupValidation, taskOwnerValidation, async (req, res) => {
     try {
-        await TaskService.deleteTask(req.body.taskId);
+        await TaskService.deleteTask(req.body.task.taskId);
         res.sendStatus(200);
     } catch (error) {
         res.status(500).json({error: error.message});
@@ -54,7 +54,7 @@ router.delete('/:id/task', authenticateToken, groupValidation, taskOwnerValidati
  */
 router.put('/:id/task/set_status', authenticateToken, groupValidation, taskReporterValidation, async (req, res) => {
     try {
-        await TaskService.setTaskStatus(req.body.taskId, req.body.status);
+        await TaskService.setTaskStatus(req.body.task.taskId, req.body.task.status);
         res.sendStatus(200);
     } catch (error) {
         res.status(500).json({error: error.message});
@@ -66,7 +66,7 @@ router.put('/:id/task/set_status', authenticateToken, groupValidation, taskRepor
  */
 router.put('/:id/task/assign', authenticateToken, groupValidation, taskOwnerValidation, async (req, res) => {
     try {
-        await TaskService.assignTask(req.body.taskId, req.body.userId);
+        await TaskService.assignTask(req.body.task.taskId, req.body.userId);
         res.sendStatus(200);
     } catch (error) {
         res.status(500).json({error: error.message});

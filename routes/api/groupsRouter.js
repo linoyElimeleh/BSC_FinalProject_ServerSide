@@ -84,7 +84,7 @@ router.put('/:id/task', authenticateToken, groupValidation, taskReporterValidati
 
 router.delete('/:id/task', authenticateToken, groupValidation, taskOwnerValidation, async (req, res) => {
     try {
-        await TaskService.deleteTask(req.body.taskId);
+        await TaskService.deleteTask(req.body.task.taskId);
         res.sendStatus(200);
     } catch (error) {
         res.status(500).json({ error: error.message });

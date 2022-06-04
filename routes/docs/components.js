@@ -283,35 +283,51 @@ module.exports = {
             DeleteTask: {
                 type: 'object',
                 properties: {
-                    taskId: {
-                        type: "integer",
-                        example: 1234
-                    }
+                    task: {
+                        type: 'object',
+                        properties: {
+                            taskId: {
+                                type: "integer",
+                                example: 1234
+                            }
+                        }
+                    },
                 }
             },
             SetTaskStatus: {
                 type: 'object',
                 properties: {
-                    taskId: {
-                        type: "integer",
-                        example: 1234
-                    },
-                    status: {
-                        type: 'boolean',
-                        example: true
+                    task: {
+                        type: 'object',
+                        properties: {
+                            taskId: {
+                                type: "integer",
+                                example: 1234
+                            },
+                            status: {
+                                type: 'boolean',
+                                example: true
+                            }
+                        }
                     }
                 }
             },
             AssignTask: {
                 type: 'object',
                 properties: {
-                    taskId: {
-                        type: "integer",
-                        example: 1234
+                    task: {
+                        type: 'object',
+                        properties: {
+                            taskId: {
+                                type: "integer",
+                                example: 1234
+                            }
+                        }
                     },
                     userId: {
                         type: 'integer',
                         example: 1234
+
                     }
                 }
             },
