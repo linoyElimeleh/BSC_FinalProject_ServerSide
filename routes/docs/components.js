@@ -210,9 +210,9 @@ module.exports = {
                                 type: "integer",
                                 example: 4
                             },
-                            score: {
-                                type: "integer",
-                                example: 500
+                            level: {
+                                type: "string",
+                                example: "EASY"
                             }
                         }
                     },
@@ -265,9 +265,9 @@ module.exports = {
                         type: "integer",
                         example: 4
                     },
-                    score: {
-                        type: "integer",
-                        example: 500
+                    level: {
+                        type: "string",
+                        example: "EASY"
                     },
                 }
             },

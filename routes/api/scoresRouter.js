@@ -102,7 +102,7 @@ router.put('/:task_id/rejectTask', authenticateToken, async (req, res) => {
 
         // Get task scores
         const taskScore = await TaskService.getTaskScore(taskId);
-        const scoreToRemove = taskScore * 0.25;
+        const scoreToRemove = taskScore * 2 / 3;
 
         // get details about the task - userID and groupID
         const taskUserGroupRelation = await TaskService.getGroupUserTaskRelation(taskId);

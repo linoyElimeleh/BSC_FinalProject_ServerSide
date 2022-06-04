@@ -35,8 +35,19 @@ const createTask = async (task, userId, groupId, ownerId) => {
             end_repeat,
             urgent,
             snooze_interval,
-            score
+            level
         } = task;
+
+        score = 0;
+        switch (level) {
+            case "HARD":
+                score = 200;
+            case "MEDIUM":
+                score = 100;
+            case "EASY":
+                score = 200;
+        }
+
         const newTask = await createTaskClient(client, title, description, category_id, due_date, done, repeat, end_repeat, urgent, snooze_interval, score);
         const taskDetails = newTask.rows[0];
         await assignTaskClient(client, taskDetails.id, userId, groupId, ownerId);
@@ -55,7 +66,18 @@ const updateTaskAsignee = async (taskId, userId) => {
 
 const updateTask = async (task) => {
     return await executeTransaction(async (client) => {
-        const { id, title, description, category_id, due_date, done, repeat, end_repeat, urgent, snooze_interval, score } = task;
+        const { id, title, description, category_id, due_date, done, repeat, end_repeat, urgent, snooze_interval, level } = task;
+
+        score = 0;
+        switch (level) {
+            case "HARD":
+                score = 200;
+            case "MEDIUM":
+                score = 100;
+            case "EASY":
+                score = 200;
+        }
+        
         return await client.query(
             `UPDATE tasks SET title=$1, description=$2, category_id=$3, due_date=$4, done=$5,
                 repeat=$6, end_repeat=$7, urgent=$8, snooze_interval=$9, score=$10
