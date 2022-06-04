@@ -1,6 +1,6 @@
 const scoresDbHandler = require('../models/actions/scores');
 
-class ScoresService {
+class ScoreService {
     constructor() {
     }
 
@@ -33,9 +33,9 @@ class ScoresService {
         return totalScores;
     }
 
-    static getSpecificScoresByUserIdAndGroupId = async (userId, groupId) => {
-        const respond = await scoresDbHandler.getScoresByUserIdAndGroupId(userId, groupId);
-        return respond.rows[0].score;
+    static getUserScoreByGroup = async (userId, groupId) => {
+        const response = await scoresDbHandler.getUserScoreByGroup(userId, groupId);
+        return response?.rows[0]?.score;
     }
 
     static checkIfUserAlreadyCreatedInGroup = async (userId, groupId) => {
@@ -55,4 +55,4 @@ class ScoresService {
     }
 }
 
-module.exports = ScoresService;
+module.exports = ScoreService;

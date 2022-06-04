@@ -2,7 +2,10 @@ const authenticateToken = require('../../middleware/authorization');
 const GroupService = require('../../services/groupService');
 const { groupValidation, adminValidation, isUserEligibleToJoin } = require('../../middleware/groupValidations');
 const TaskService = require('../../services/taskService');
-const { taskOwnerValidation, taskReporterValidation } = require('../../middleware/taskValidation');
+const ScoreService = require('../../services/scoreService');
+const { taskOwnerValidation, taskReporterValidation, taskAssigneeValidation } = require('../../middleware/taskValidation');
+const TaskNotRejectable = require('../../exceptions/TaskNotRejectable');
+const { createScoreRow } = require('../../services/scoreService');
 const router = require('express').Router();
 
 /**
@@ -37,6 +40,9 @@ router.post('/:id/add_members', authenticateToken, groupValidation, adminValidat
         const groupId = req.params.id;
         const idsToAdd = req.body.members;
         await GroupService.addGroupMembers(groupId, idsToAdd);
+        idsToAdd.forEach(async (id) => {
+            await createScoreRow(0, id, groupId);
+        });
         res.sendStatus(200);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -93,7 +99,7 @@ router.delete('/:id/task', authenticateToken, groupValidation, taskOwnerValidati
 
 router.put('/:id/task/set_status', authenticateToken, groupValidation, taskReporterValidation, async (req, res) => {
     try {
-        await TaskService.setTaskStatus(req.body.taskId, req.body.status);
+        await TaskService.setTaskStatus(req.body.task.taskId, req.body.task.status);
         res.sendStatus(200);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -106,6 +112,30 @@ router.put('/:id/task/assign', authenticateToken, groupValidation, taskOwnerVali
         res.sendStatus(200);
     } catch (error) {
         res.status(500).json({ error: error.message });
+    }
+});
+
+/**
+ * This request reject task by group id and members
+*/
+ router.put('/:id/task/reject', authenticateToken, groupValidation, taskAssigneeValidation, async (req, res) => {
+    try {
+        const { task_id, score: taskScore } = req.body.task;
+        const scoreToRemove = taskScore * 1.5;
+        const userId = req.user.id;
+        const groupId = req.params.id;
+
+        const score = await ScoreService.getUserScoreByGroup(userId, groupId);
+        if (score === null || score < scoreToRemove) {
+            return res.status(400).json(new TaskNotRejectable());
+        }
+
+        await ScoreService.updateScoreRow(score - scoreToRemove, userId, groupId);
+        await TaskService.assignTask(task_id, null);
+
+        res.sendStatus(200);
+    } catch (error) {
+        res.status(500).json({error: error.message});
     }
 });
 
@@ -126,6 +156,7 @@ router.get('/:id/task/:task_id', authenticateToken, groupValidation, async (req,
 router.post('/', authenticateToken, async (req, res) => {
     try {
         const newGroup = await GroupService.createGroup(req.body, req.user.id);
+        await createScoreRow(0, req.user.id, newGroup.id);
         res.json(newGroup);
     } catch (error) {
         res.status(500).json({ error: error.message });

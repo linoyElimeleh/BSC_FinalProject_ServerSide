@@ -14,6 +14,15 @@ const taskOwnerValidation = async (req, res, next) => {
     });
 }
 
+const taskAssigneeValidation = async (req, res, next) => {
+    const userId = req.user.id;
+    const isTaskAssignee = await TaskService.isTaskAssignee(req.body.task.id, userId);
+    if (!isTaskAssignee) {
+        throw new UserNotAssignee();
+    }  
+    next();
+}
+
 const taskReporterValidation = async (req, res, next) => {
     isGroupAdmin(req, res, async (isAdmin, _, userId, taskId) => {
         const isTaskReporter = await TaskService.isTaskReporter(taskId, userId);
@@ -28,7 +37,7 @@ const isGroupAdmin = async (req, res, callback) => {
     try {
         const groupId = req.group.id;
         const userId = req.user.id;
-        const taskId = req.body.task.taskId ?? req.body.task.id;
+        const taskId = req.body.taskId || req.body.task.taskId || req.body.task.id;
         const isAdmin = await GroupService.isUserAdmin(groupId, userId);
         return await callback(isAdmin, groupId, userId, taskId);
     } catch (e) {
@@ -45,5 +54,6 @@ const isGroupAdmin = async (req, res, callback) => {
 
 module.exports = {
     taskOwnerValidation,
-    taskReporterValidation
+    taskReporterValidation,
+    taskAssigneeValidation
 };

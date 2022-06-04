@@ -49,6 +49,14 @@ class TaskService {
         }
         return taskUserRelation.owner_id === userId || taskUserRelation.user_id === userId;
     }
+
+    static isTaskAssignee = async (taskId, userId) => {
+        const taskUserRelation = await this.getGroupUserTaskRelation(taskId);
+        if (!taskUserRelation) {
+            throw new TaskNotExist();
+        }
+        return taskUserRelation.user_id === userId;
+    }
 }
 
 module.exports = TaskService;

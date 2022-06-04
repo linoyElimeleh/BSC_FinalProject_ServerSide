@@ -16,7 +16,7 @@ const getScoresByUserId = async (userId) => {
     return await pool.query('SELECT * FROM scores WHERE user_id = $1', [userId]);
 }
 
-const getScoresByUserIdAndGroupId = async (userId, groupId) => {
+const getUserScoreByGroup = async (userId, groupId) => {
     return await pool.query('SELECT * FROM scores WHERE user_id = $1 AND group_id = $2', [userId, groupId]);
 }
 
@@ -52,5 +52,5 @@ module.exports = {
     updateScoreByUserId,
     createScoresByUserId,
     isUserAlreadyCreatedInGroup,
-    getScoresByUserIdAndGroupId
+    getUserScoreByGroup
 };

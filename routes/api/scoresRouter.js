@@ -1,6 +1,6 @@
 const authenticateToken = require('../../middleware/authorization');
-const ScoreService = require('../../services/scoresService');
-const {groupValidation, adminValidation, isUserEligibleToJoin} = require('../../middleware/groupValidations');
+const ScoreService = require('../../services/scoreService');
+const { groupValidation } = require('../../middleware/groupValidations');
 const router = require('express').Router();
 const TaskService = require('../../services/taskService');
 
@@ -86,43 +86,6 @@ router.post('/:id/:user_id/addNewScore', authenticateToken, groupValidation, asy
         const userId = req.params.user_id;
         const score = req.body.score;
         await ScoreService.createScoreRow(score, userId, groupId);
-        res.sendStatus(200);
-    } catch (error) {
-        res.status(500).json({error: error.message});
-    }
-});
-
-/**
- * This request reject task by group id and members
- */
-router.put('/:task_id/rejectTask', authenticateToken, async (req, res) => {
-    try {
-        const taskId = req.params.task_id;
-        //const userId = req.user.id;
-
-        // Get task scores
-        const taskScore = await TaskService.getTaskScore(taskId);
-        const scoreToRemove = taskScore * 2 / 3;
-
-        // get details about the task - userID and groupID
-        const taskUserGroupRelation = await TaskService.getGroupUserTaskRelation(taskId);
-        const userId = taskUserGroupRelation.user_id;
-        const groupId = taskUserGroupRelation.group_id;
-
-        // get current scores of user
-        const currentScores = await ScoreService.getSpecificScoresByUserIdAndGroupId(userId, groupId);
-
-        // check if scores is what we expect
-        if (currentScores == null || (currentScores - scoreToRemove) < 0) {
-            return res.status(400).json({error: "Error: User dont have the scores to reject this task"});
-        }
-
-        // reducre scores
-        await ScoreService.updateScoreRow((currentScores - scoreToRemove), userId, groupId);
-
-        //todo remove user from this task- unassign
-        await TaskService.assignTask(taskId, null);
-
         res.sendStatus(200);
     } catch (error) {
         res.status(500).json({error: error.message});

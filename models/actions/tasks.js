@@ -35,7 +35,7 @@ const createTask = async (task, userId, groupId, ownerId) => {
             end_repeat,
             urgent,
             snooze_interval,
-            level
+            level = "EASY"
         } = task;
 
         score = 0;
@@ -45,7 +45,7 @@ const createTask = async (task, userId, groupId, ownerId) => {
             case "MEDIUM":
                 score = 100;
             case "EASY":
-                score = 200;
+                score = 50;
         }
 
         const newTask = await createTaskClient(client, title, description, category_id, due_date, done, repeat, end_repeat, urgent, snooze_interval, score);
