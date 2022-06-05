@@ -1,12 +1,13 @@
 const scores = {
-    "HARD": 200,
-    "MEDIUM:": 100,
-    "EASY": 50,
-    "DEFAULT": 50
+    "hard": 200,
+    "medium": 100,
+    "easy": 50,
+    "default": 50
 };
 
 const getScoreByLevel = (level) => {
-    return scores[level] || scores["DEFAULT"];
+    if (!level) return scores["default"];
+    return scores[level.toLowercase()] || scores["default"];
 };
 
 module.exports = {
