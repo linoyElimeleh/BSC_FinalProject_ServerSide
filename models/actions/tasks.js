@@ -1,4 +1,5 @@
 const { pool, executeTransaction } = require('../index');
+const getScoreByLevel = require('../../utils/taskUtils').getScoreByLevel;
 
 
 const getTaskById = async (id) => {
@@ -38,16 +39,7 @@ const createTask = async (task, userId, groupId, ownerId) => {
             level
         } = task;
 
-        score = 0;
-        switch (level) {
-            case "HARD":
-                score = 200;
-            case "MEDIUM":
-                score = 100;
-            case "EASY":
-            default:
-                score = 50;
-        }
+        const score = getScoreByLevel(level);
 
         const newTask = await createTaskClient(client, title, description, category_id, due_date, done, repeat, end_repeat, urgent, snooze_interval, score);
         const taskDetails = newTask.rows[0];
@@ -68,16 +60,7 @@ const updateTaskAsignee = async (taskId, userId) => {
 const updateTask = async (task) => {
     return await executeTransaction(async (client) => {
         const { id, title, description, category_id, due_date, done, repeat, end_repeat, urgent, snooze_interval, level } = task;
-
-        score = 0;
-        switch (level) {
-            case "HARD":
-                score = 200;
-            case "MEDIUM":
-                score = 100;
-            case "EASY":
-                score = 200;
-        }
+        const score = getScoreByLevel(level);
         
         return await client.query(
             `UPDATE tasks SET title=$1, description=$2, category_id=$3, due_date=$4, done=$5,
