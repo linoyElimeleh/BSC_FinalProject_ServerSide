@@ -7,7 +7,7 @@ const scores = {
 
 const getScoreByLevel = (level) => {
     if (!level) return scores["default"];
-    return scores[level.toLowercase()] || scores["default"];
+    return scores[level.toLowerCase()] || scores["default"];
 };
 
 module.exports = {
