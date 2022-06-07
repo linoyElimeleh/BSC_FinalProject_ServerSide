@@ -6,6 +6,7 @@ const ScoreService = require('../../services/scoreService');
 const { taskOwnerValidation, taskReporterValidation, taskAssigneeValidation } = require('../../middleware/taskValidation');
 const TaskNotRejectable = require('../../exceptions/TaskNotRejectable');
 const { createScoreRow, updateScoreRow } = require('../../services/scoreService');
+const { getScoresByGroupId } = require('../../models/actions/scores');
 const router = require('express').Router();
 
 /**
@@ -134,7 +135,9 @@ router.put('/:id/task/assign', authenticateToken, groupValidation, taskOwnerVali
         }
 
         await ScoreService.updateScoreRow(-scoreToRemove, userId, groupId);
-        await TaskService.assignTask(task_id, null);
+
+        const users = (await ScoreService.getAllUserScoresByGroupId(groupId)).sort((a, b) => b.score - a.score).reverse();
+        await TaskService.assignTask(task_id, users ? users[0].user_id : null);
 
         res.sendStatus(200);
     } catch (error) {
@@ -151,6 +154,14 @@ router.get('/:id/task/:task_id', authenticateToken, groupValidation, async (req,
     }
 });
 
+router.get('/:id/user/score', authenticateToken, async (req, res) => {
+    try {
+        const score = await ScoreService.getUserScoreByGroup(req.user.id, req.params.id);
+        res.json({ score });
+    } catch (error) {
+        res.status(500).json({error: error.message});
+    }
+});
 
 /**
  * Create new group by body and user id.
